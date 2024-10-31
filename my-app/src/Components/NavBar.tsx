@@ -17,7 +17,6 @@ function Navbar() {
   return (
     <div className="App">
       <header className={`${styles.appheadernav}`}>
-      <a href='#home' className='logo'>Dev. </a>
         <nav className='navbar'>
           {/* logo */}
           <ul className={`${styles.navMenu} ${isActive ? styles.active : ''}`}>
