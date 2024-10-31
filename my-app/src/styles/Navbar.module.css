@@ -10,11 +10,13 @@
   }
   .appheadernav {
     min-height: 12vh;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+    position:fixed;
   }
   ul {
     list-style: none;
@@ -118,5 +120,22 @@
   
     .navMenu li {
       margin: 16px 0;
+    }
+    .appheadernav {
+      min-height: 12vh;
+      display: flex;
+      align-items: center;
+      justify-content:flex-end;
+      font-size: calc(10px + 2vmin);
+      color: white;
+      padding: 0px 6vh;
+    }
+    .navbar {
+      padding: 10px 20px;
+      display:flex;
+      align-items:center;
+      min-height: 70px;
+      padding-right: 60px;
+      margin-right: 60px;
     }
   }
