@@ -8,11 +8,9 @@ function App() {
     <BrowserRouter>
     <Navbar />
     <div className="App">
-      <header className="App-header">
           <Routes>
             <Route path="/" element={<Home/>}/>
           </Routes>
-      </header>
     </div>
     </BrowserRouter>
 
