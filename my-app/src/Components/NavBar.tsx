@@ -17,6 +17,11 @@ function Navbar() {
   return (
     <div className="App">
       <header className={`${styles.appheadernav}`}>
+      <span className="">
+            <button className={`${styles.homebuttonnav}`}>
+              Local Eats
+            </button>
+          </span>
         <nav className='navbar'>
           {/* logo */}
           <ul className={`${styles.navMenu} ${isActive ? styles.active : ''}`}>
