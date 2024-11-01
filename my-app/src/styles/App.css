@@ -6,7 +6,42 @@
   height: 40vmin;
   pointer-events: none;
 }
+.Home-background {
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../Assets/foodBackground.png");
+}
+.landing-page-slogan {
+  padding-top: 25vh;
+  /*margin-left: -30vw;*/
+  color: var(--primary);
+  font-size:xx-large;
+  font-style: italic;
+  justify-content: center;
+}
+.wrapper-ting {
+  width:fit-content;
+  justify-content: center;
+  margin: auto;
+}
+.landing-page-slogan h3 {
+  margin-bottom:200px;
+  background-color: #FDFAF5;
+  box-shadow: 1px 1px 35px #FDFAF5;
+}
+.landing-page-slogan h1 {
+  background-color: #FDFAF5;
+  box-shadow: 1px 1px 35px #FDFAF5;
 
+}
+.landing-page-slogan h5 {
+  background-color: #FDFAF5;
+  box-shadow: 1px 1px 35px #FDFAF5;
+  width: fit-content;
+  margin:auto
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
