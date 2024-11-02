@@ -45,13 +45,16 @@
   
   /* navbar */
   .navbar {
-    background-color: red;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 40px;
     min-height: 70px;
+    border: 1;
+    color: var(--secondary);
+    border-color: var(--secondary);
+    border-width: 2px;
   }
   
   
@@ -79,6 +82,9 @@
     justify-content: space-between;
     align-items: center;
     gap: 60px;
+    border: 1;
+    border-color: var(--secondary);
+    border-width: 2px;
   }
 
 .homebuttonnav {
@@ -93,11 +99,13 @@
   text-align: center;
   text-decoration: none;
   transition: all 250ms;
-  border: 0;
+  border: 1;
   font-size: 16px;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  border-color: var(--secondary);
+  border-width: 2px;
 }
 
 .homebuttonNav:hover {

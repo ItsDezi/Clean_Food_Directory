@@ -22,7 +22,7 @@ function Navbar() {
               Local Eats
             </button>
           </span>
-        <nav className='navbar'>
+        <nav className={`${styles.navbar}`}>
           {/* logo */}
           <ul className={`${styles.navMenu} ${isActive ? styles.active : ''}`}>
             <li onClick={removeActive}>
