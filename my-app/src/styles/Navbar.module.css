@@ -85,6 +85,7 @@
     border: 1;
     border-color: var(--secondary);
     border-width: 2px;
+    border-style: solid;
   }
 
 .homebuttonnav {
