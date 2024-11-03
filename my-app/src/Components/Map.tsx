@@ -3,7 +3,7 @@ import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 
-import { DivIcon, Icon, divIcon, point } from "leaflet";
+import { DivIcon, Icon, divIcon, map, point } from "leaflet";
 import L from 'leaflet';
 
 
@@ -42,8 +42,8 @@ const createClusterCustomIcon = function (this:any, cluster:any) {
   };
   return (
     <div className='map-container-container'>
-<MapContainer className="map-container" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true}>
-  <TileLayer
+<MapContainer className="map-container" center={[51.505, -0.09]} minZoom={2} zoom={13} scrollWheelZoom={true} maxBounds={[[85,-180],[-85, 180]]}>
+  <TileLayer noWrap={true}
     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
   />
