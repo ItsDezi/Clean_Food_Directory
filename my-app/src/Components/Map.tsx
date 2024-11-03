@@ -3,32 +3,43 @@ import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 
-import { Icon, divIcon, point } from "leaflet";
+import { DivIcon, Icon, divIcon, point } from "leaflet";
+import L from 'leaflet';
 
-// create custom icon
-// const customIcon = new Icon({
-//   // iconUrl: "https://cdn-icons-png.flaticon.com/512/447/447031.png",
-//   iconUrl: require("./icons/placeholder.png"),
-//   iconSize: [38, 38] // size of the icon
-// });
 
-// markers
-const markers = [
-  {
-    geocode: [48.86, 2.3522],
-    popUp: "Hello, I am pop up 1"
-  },
-  {
-    geocode: [48.85, 2.3522],
-    popUp: "Hello, I am pop up 2"
-  },
-  {
-    geocode: [48.855, 2.34],
-    popUp: "Hello, I am pop up 3"
-  }
-];
-
-export default function App() {
+export default function Map() {
+    // markers
+    type marker = {
+        geocode:[number, number],
+        popUp: String
+    }
+const markers:marker[] = [
+    {
+      geocode: [48.86, 2.3522],
+      popUp: "Hello, I am pop up 1"
+    },
+    {
+      geocode: [48.85, 2.3522],
+      popUp: "Hello, I am pop up 2"
+    },
+    {
+      geocode: [48.855, 2.34],
+      popUp: "Hello, I am pop up 3"
+    }
+  ];
+    // create custom icon
+let customIcon = L.icon({
+    iconUrl: "https://www.svgrepo.com/show/74027/orange.svg",
+    iconSize: [38, 95],
+});
+    // custom cluster icon
+const createClusterCustomIcon = function (this:any, cluster:any) {
+    return new DivIcon({
+      html: `<span class="cluster-icon">${cluster.getChildCount()}</span>`,
+      className: "custom-marker-cluster",
+      iconSize: point(33, 33, true)
+    });
+  };
   return (
     <div className='map-container-container'>
 <MapContainer className="map-container" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true}>
@@ -36,11 +47,19 @@ export default function App() {
     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
   />
-  <Marker position={[51.505, -0.09]}>
-    <Popup>
-      A pretty CSS3 popup. <br /> Easily customizable.
-    </Popup>
-  </Marker>
+
+  <MarkerClusterGroup
+        chunkedLoading
+        iconCreateFunction={createClusterCustomIcon}
+      >
+        {/* Mapping through the markers */}
+        {markers.map((marker) => (
+          <Marker position={marker.geocode} icon={customIcon}>
+            <Popup>{marker.popUp}</Popup>
+          </Marker>
+        ))}
+      </MarkerClusterGroup>
+  
 </MapContainer>
 </div>
   );

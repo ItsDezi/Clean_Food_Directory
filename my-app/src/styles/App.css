@@ -49,6 +49,7 @@
 .landing-page-slogan h1 {
   background-color: #FDFAF5;
   box-shadow: 1px 1px 65px #FDFAF5;
+  ;
 
 }
 .landing-page-slogan h5 {
@@ -57,6 +58,19 @@
   width: fit-content;
   margin:auto
 }
+.custom-marker-cluster {
+  background-color: var(--primary);
+  height: 2em;
+  width: 2em;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  box-shadow: 0 0 0px 5px var(--primary);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
