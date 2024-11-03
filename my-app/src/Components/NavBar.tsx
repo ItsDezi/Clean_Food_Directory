@@ -18,9 +18,12 @@ function Navbar() {
     <div className="App">
       <header className={`${styles.appheadernav}`}>
       <span className="">
-            <button className={`${styles.homebuttonnav}`}>
+        <div className={`${styles.homebuttonnav}`}>
+        <a href = "#home" >
               Local Eats
-            </button>
+            </a>
+        </div>
+
           </span>
         <nav className={`${styles.navbar}`}>
           {/* logo */}
