@@ -9,12 +9,16 @@ function App() {
     <BrowserRouter>
     <Navbar />
     <div className="App">
-          <Routes>
+          {/* <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/map" element={<Map/>}/>
-          </Routes>
-      <Map/>
-
+          </Routes> */}
+          <div id = "home">
+          <Home/>
+          </div>
+          <div id = "map">
+          <Map/>
+          </div>
     </div>
     </BrowserRouter>
 

@@ -26,7 +26,7 @@ function Navbar() {
           {/* logo */}
           <ul className={`${styles.navMenu} ${isActive ? styles.active : ''}`}>
             <li onClick={removeActive}>
-              <a href='#home' className={`${styles.navLink}`}>Home</a>
+              <a href='#map' className={`${styles.navLink}`}>Map</a>
             </li>
             <li onClick={removeActive}>
               <a href='#home' className={`${styles.navLink}`}>Catalog</a>
