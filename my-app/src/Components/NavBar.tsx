@@ -19,7 +19,7 @@ function Navbar() {
       <header className={`${styles.appheadernav}`}>
       <span className="">
         <div className={`${styles.homebuttonnav}`}>
-        <a href = "#home" >
+        <a href = "/" >
               Local Eats
             </a>
         </div>
@@ -29,10 +29,10 @@ function Navbar() {
           {/* logo */}
           <ul className={`${styles.navMenu} ${isActive ? styles.active : ''}`}>
             <li onClick={removeActive}>
-              <a href='#map' className={`${styles.navLink}`}>Map</a>
+              <a href='/#map' className={`${styles.navLink}`}>Map</a>
             </li>
             <li onClick={removeActive}>
-              <a href='#home' className={`${styles.navLink}`}>Catalog</a>
+              <a href='/addListing' className={`${styles.navLink}`}>Contribute</a>
             </li>
             <li onClick={removeActive}>
               <a href='#home' className={`${styles.navLink}`}>All products</a>

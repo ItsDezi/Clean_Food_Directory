@@ -1,7 +1,8 @@
 import Background from '../Assets/foodBackground.png';
-
+import Map from '../Components/Map';
 function Home() {
     return (
+      <>
       <div className="App Home-background">
         <div className='landing-page-slogan'>
           <div className='wrapper-ting'>
@@ -29,6 +30,10 @@ function Home() {
 
 
       </div>
+      <div id='map'>
+      <Map/>
+      </div>
+      </>
     );
   }
   export default Home;

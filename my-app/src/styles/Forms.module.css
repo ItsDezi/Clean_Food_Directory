@@ -1,0 +1,12 @@
+.formcontainer{
+padding-top: 30vh;
+height: 100%;
+width: 100%;
+display: flex;
+}
+
+.formcontainer form {
+    margin: auto;
+    display: inline-block;
+    justify-content: right;
+}
