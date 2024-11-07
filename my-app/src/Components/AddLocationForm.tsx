@@ -3,6 +3,7 @@ import styles from '../styles/Forms.module.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import React, { useState } from "react";
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 function AddLocationForm() {
     const [email, setEmail] = useState("");
@@ -21,13 +22,12 @@ function AddLocationForm() {
       <div className={`${styles.formcontainer}`}>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="formBasicName">
-                        <Form.FloatingLabel className='mb-3' label='First Name'>
+                        <FloatingLabel id='fn' className='mb-3' label='First Name'/>
                             <Form.Control
                                 type="firstName"
                                 placeholder="First Name"
                                 onChange={(e) => setFirstName(e.target.value)}
                             />
-                            </Form.FloatingLabel>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicName">
                             <Form.Control
