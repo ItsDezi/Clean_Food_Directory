@@ -10,26 +10,26 @@ import jakarta.persistence.*;
 @Table(name="contributors")
 public class Contributor {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String contributorName;
+    private String contributor_name;
     //@Column(name="contributor_email")
-    private String contributorEmail;
+    private String contributor_email;
 
     @ManyToOne()//In the future this should probably be a ManyToMany mapping
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location;
     public String getContributorName() {
-        return contributorName;
+        return contributor_name;
     }
     public void setContributorName(String contributorName) {
-        this.contributorName = contributorName;
+        this.contributor_name = contributorName;
     }
     public String getContributorEmail() {
-        return contributorEmail;
+        return contributor_email;
     }
     public void setContributorEmail(String contributorEmail) {
-        this.contributorEmail = contributorEmail;
+        this.contributor_email = contributorEmail;
     }
 
 }

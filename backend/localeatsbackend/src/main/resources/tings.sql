@@ -1,52 +1,47 @@
--- CREATE TABLE locations (
---     id BIGINT PRIMARY KEY AUTO_INCREMENT,
---     name VARCHAR(255),
---     description TEXT,
---     categories JSON,
---     productsAvailable JSON,
---     address NUMERIC,
---     city VARCHAR(255),
---     state VARCHAR(100),
---     postalCode NUMERIC,
---     country VARCHAR(100),
---     phoneNumber NUMERIC,
---     email VARCHAR(255),
---     daysOpen JSON,
---     openTimestamp TIMESTAMP,
---     closeTimestamp TIMESTAMP,
---     timeZone VARCHAR(100),  -- Storing as VARCHAR since SQL doesn’t natively support TimeZone
---     paymentMethods JSON,
---     seasons JSON,
---     certifications JSON,
---     notes TEXT,
---     parkingAvailable BOOLEAN,
---     coordinates JSON,  -- To store latitude and longitude as an array
---     reviews JSON,
---     lastUpdated DATE
--- );
+--removed categories
+CREATE TABLE locations (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    description TEXT,
+    address VARCHAR(255),
+    city VARCHAR(255),
+    state VARCHAR(100),
+    postal_code VARCHAR(15),
+    country VARCHAR(100),
+    phone_number INT,
+    email VARCHAR(255),
+    open_timestamp TIMESTAMP,
+    close_timestamp TIMESTAMP,
+    time_zone VARCHAR(100),  -- Storing as VARCHAR since SQL doesn’t natively support TimeZone
+    notes TEXT,
+    parking_available BOOLEAN,
+    latitude VARCHAR(12),
+    longitude VARCHAR(12),
+    last_updated DATE
+);
 
 
--- CREATE TABLE contributors (
---     id BIGINT PRIMARY KEY AUTO_INCREMENT,
---     contributorName VARCHAR(255),
---     contributorEmail VARCHAR(255),
---     location_id BIGINT,
+CREATE TABLE contributors (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    contributor_name VARCHAR(255),
+    contributor_email VARCHAR(255),
+    location_id BIGINT,
     
---     CONSTRAINT fk_location
---         FOREIGN KEY (location_id) 
---         REFERENCES locations(id)
--- );
+    CONSTRAINT fk_location
+        FOREIGN KEY (location_id) 
+        REFERENCES locations(id)
+);
 
 
--- CREATE TABLE media (
---     media_id BIGINT PRIMARY KEY AUTO_INCREMENT,
---     websiteURL VARCHAR(255),
---     facebookURL VARCHAR(255),
---     instagramHandle VARCHAR(255),
---     additionalLinks TEXT,
---     location_id BIGINT,
+CREATE TABLE media (
+    media_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    website_url VARCHAR(255),
+    facebook_url VARCHAR(255),
+    instagram_handle VARCHAR(255),
+    additional_links VARCHAR(255),
+    location_id BIGINT,
     
---     CONSTRAINT fk_location_media
---         FOREIGN KEY (location_id)
---         REFERENCES locations(id)
--- );
+    CONSTRAINT fk_location_media
+        FOREIGN KEY (location_id)
+        REFERENCES locations(id)
+);

@@ -6,39 +6,48 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TimeZone;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.DialectOverride.ColumnDefault;
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name="locations")
 public class Location {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
     private String description;
-    private String[] categories;
-    private String[] productsAvailable;
-    private Number address;
+    //@Column(columnDefinition = "VARBINARY")
+    //private List<String> categories;
+    //private String[] products_available;
+    private String address;
     private String city;
     private String state;
-    private Number postalCode;
+    private String postalCode;
     private String country;
-    private Number phoneNumber;
+    private Integer phoneNumber;
     private String email;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "location")
     private Media media;
-    private String[] daysOpen;
+    //private String[] daysOpen;
     private Timestamp openTimestamp;
     private Timestamp closeTimestamp;
     private TimeZone timeZone;
-    private String[] paymentMethods;
-    private String[] seasons;
-    private String[] certifications;
+    //private String[] paymentMethods;
+    //private String[] seasons;
+   //private String[] certifications;
     private String notes;
     private boolean parkingAvailable;
-    private Number[] coordinates;
-    private String[] reviews;
+    //@Column(name = "coordinates", columnDefinition = "NUMERIC[]")
+    //private Double[] coordinates;
+    @Column(columnDefinition = "VARCHAR(12)")
+    private String latitude;
+    @Column(columnDefinition = "VARCHAR(12)")
+    private String longitude;
+    //private String[] reviews;
     private Date lastUpdated;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "location")//should probably change to be @ManytoMany in the future
     private List<Contributor> contributors = new ArrayList<>();
@@ -60,22 +69,10 @@ public class Location {
     public void setDescription(String description) {
         this.description = description;
     }
-    public String[] getCategories() {
-        return categories;
-    }
-    public void setCategories(String[] categories) {
-        this.categories = categories;
-    }
-    public String[] getProductsAvailable() {
-        return productsAvailable;
-    }
-    public void setProductsAvailable(String[] productsAvailable) {
-        this.productsAvailable = productsAvailable;
-    }
-    public Number getAddress() {
+    public String getAddress() {
         return address;
     }
-    public void setAddress(Number address) {
+    public void setAddress(String address) {
         this.address = address;
     }
     public String getCity() {
@@ -90,10 +87,10 @@ public class Location {
     public void setState(String state) {
         this.state = state;
     }
-    public Number getPostalCode() {
+    public String getPostalCode() {
         return postalCode;
     }
-    public void setPostalCode(Number postalCode) {
+    public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
     public String getCountry() {
@@ -102,10 +99,10 @@ public class Location {
     public void setCountry(String country) {
         this.country = country;
     }
-    public Number getPhoneNumber() {
+    public Integer getPhoneNumber() {
         return phoneNumber;
     }
-    public void setPhoneNumber(Number phoneNumber) {
+    public void setPhoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
     public String getEmail() {
@@ -114,11 +111,11 @@ public class Location {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String[] getDaysOpen() {
-        return daysOpen;
+    public Media getMedia() {
+        return media;
     }
-    public void setDaysOpen(String[] daysOpen) {
-        this.daysOpen = daysOpen;
+    public void setMedia(Media media) {
+        this.media = media;
     }
     public Timestamp getOpenTimestamp() {
         return openTimestamp;
@@ -138,24 +135,6 @@ public class Location {
     public void setTimeZone(TimeZone timeZone) {
         this.timeZone = timeZone;
     }
-    public String[] getPaymentMethods() {
-        return paymentMethods;
-    }
-    public void setPaymentMethods(String[] paymentMethods) {
-        this.paymentMethods = paymentMethods;
-    }
-    public String[] getSeasons() {
-        return seasons;
-    }
-    public void setSeasons(String[] seasons) {
-        this.seasons = seasons;
-    }
-    public String[] getCertifications() {
-        return certifications;
-    }
-    public void setCertifications(String[] certifications) {
-        this.certifications = certifications;
-    }
     public String getNotes() {
         return notes;
     }
@@ -168,17 +147,17 @@ public class Location {
     public void setParkingAvailable(boolean parkingAvailable) {
         this.parkingAvailable = parkingAvailable;
     }
-    public Number[] getCoordinates() {
-        return coordinates;
+    public String getLatitude() {
+        return latitude;
     }
-    public void setCoordinates(Number[] coordinates) {
-        this.coordinates = coordinates;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
     }
-    public String[] getReviews() {
-        return reviews;
+    public String getLongitude() {
+        return longitude;
     }
-    public void setReviews(String[] reviews) {
-        this.reviews = reviews;
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
     public Date getLastUpdated() {
         return lastUpdated;
@@ -186,5 +165,11 @@ public class Location {
     public void setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
-
+    public List<Contributor> getContributors() {
+        return contributors;
+    }
+    public void setContributors(List<Contributor> contributors) {
+        this.contributors = contributors;
+    }
 }
+    

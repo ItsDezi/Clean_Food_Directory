@@ -25,8 +25,20 @@ public class LocationServiceImpl implements LocationService{
         List<LocationPreview> previews = new ArrayList<>();
         for(Location loc : locationRepository.findAll())
         {
-            previews.add(new LocationPreview(loc.getCoordinates(), loc.getName()));
+            previews.add(new LocationPreview(loc.getLatitude(), loc.getLongitude(), loc.getName()));
         }
         return previews;
+    }
+    public void saveLocation(Location location) throws Exception
+    {
+        if (location.getAddress() == null && (location.getLatitude() == null && location.getLongitude() == null))
+        {
+            throw new Exception("Coordinates and address are null.");
+        }
+        // else if(location.getCoordinates().length != 2)
+        // {
+        //     throw new Exception("Coordniates have invalid amount of entries.");
+        // }
+        locationRepository.save(location);
     }
 }

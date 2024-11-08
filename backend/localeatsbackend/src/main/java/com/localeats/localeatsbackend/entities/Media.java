@@ -12,9 +12,11 @@ import jakarta.persistence.*;
 @Table(name="media")
 public class Media {
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long media_id;
+    @Column(name="website_url")
     private String websiteURL;
+    @Column(name="facebook_url")
     private String facebookURL;
     private String instagramHandle;
     private String additionalLinks;
@@ -22,10 +24,10 @@ public class Media {
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location;
     public Long getId() {
-        return id;
+        return media_id;
     }
     public void setId(Long id) {
-        this.id = id;
+        this.media_id = id;
     }
     public String getWebsiteURL() {
         return websiteURL;
