@@ -22,21 +22,21 @@ public class Controller {
     @Autowired
     LocationServiceImpl locationServiceImpl;
 
-    // @GetMapping("")//Future edit: if number of locations grows to much, conditional rendering of locations within view might be necessary but for now, all will appear
-    // public ResponseEntity<List<LocationPreview>> getNameAndCoordinates() {
-    //     return ResponseEntity.ok(locationServiceImpl.getAllPreviews());
-    // }
+    @GetMapping("")//Future edit: if number of locations grows to much, conditional rendering of locations within view might be necessary but for now, all will appear
+    public ResponseEntity<List<LocationPreview>> getNameAndCoordinates() {
+        return ResponseEntity.ok(locationServiceImpl.getAllPreviews());
+    }
     @PostMapping("")
     public ResponseEntity<String> postMethodName(@RequestBody Location loc) {
         //TODO: process POST request
         System.out.println(loc.getCoordinates());
         return ResponseEntity.ok("HI!");
     }
-    @GetMapping("")
-    public ResponseEntity<String> getMethodName(@RequestBody String str) {
-        System.out.println(str);
-        return ResponseEntity.ok("returning");
-    }
+    // @GetMapping("")
+    // public ResponseEntity<String> getMethodName(@RequestBody String str) {
+    //     System.out.println(str);
+    //     return ResponseEntity.ok("returning");
+    // }
     
     
 }
