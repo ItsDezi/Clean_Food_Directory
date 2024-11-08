@@ -1,7 +1,9 @@
-package com.localeats.entities;
+package com.localeats.localeatsbackend.entities;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.TimeZone;
 
 import jakarta.persistence.*;
@@ -24,10 +26,8 @@ public class Location {
     private String country;
     private Number phoneNumber;
     private String email;
-    private String websiteURL;
-    private String facebookURL;
-    private String instagramHandle;
-    private String additionalLinks;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "location")
+    private Media media;
     private String[] daysOpen;
     private Timestamp openTimestamp;
     private Timestamp closeTimestamp;
@@ -40,8 +40,8 @@ public class Location {
     private Number[] coordinates;
     private String[] reviews;
     private Date lastUpdated;
-    private String contributorName;
-    private String contributorEmail;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "location")//should probably change to be @ManytoMany in the future
+    private List<Contributor> contributors = new ArrayList<>();
     public Long getId() {
         return id;
     }
@@ -114,30 +114,6 @@ public class Location {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getWebsiteURL() {
-        return websiteURL;
-    }
-    public void setWebsiteURL(String websiteURL) {
-        this.websiteURL = websiteURL;
-    }
-    public String getFacebookURL() {
-        return facebookURL;
-    }
-    public void setFacebookURL(String facebookURL) {
-        this.facebookURL = facebookURL;
-    }
-    public String getInstagramHandle() {
-        return instagramHandle;
-    }
-    public void setInstagramHandle(String instagramHandle) {
-        this.instagramHandle = instagramHandle;
-    }
-    public String getAdditionalLinks() {
-        return additionalLinks;
-    }
-    public void setAdditionalLinks(String additionalLinks) {
-        this.additionalLinks = additionalLinks;
-    }
     public String[] getDaysOpen() {
         return daysOpen;
     }
@@ -209,18 +185,6 @@ public class Location {
     }
     public void setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
-    }
-    public String getContributorName() {
-        return contributorName;
-    }
-    public void setContributorName(String contributorName) {
-        this.contributorName = contributorName;
-    }
-    public String getContributorEmail() {
-        return contributorEmail;
-    }
-    public void setContributorEmail(String contributorEmail) {
-        this.contributorEmail = contributorEmail;
     }
 
 }
