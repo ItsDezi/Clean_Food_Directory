@@ -17,7 +17,14 @@ CREATE TABLE locations (
     parking_available BOOLEAN,
     latitude DECIMAL(8,6),
     longitude DECIMAL(9,6),
-    last_updated TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP
+    last_updated TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+    website_url VARCHAR(255),
+    facebook_url VARCHAR(255),
+    instagram_handle VARCHAR(255),
+    additional_links VARCHAR(255),
+    twitter_url VARCHAR(255),
+    youtube_url VARCHAR(255),
+    tiktok_url VARCHAR(255)
 );
 
 
@@ -33,15 +40,15 @@ CREATE TABLE contributors (
 );
 
 
-CREATE TABLE media (
-    media_id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    website_url VARCHAR(255),
-    facebook_url VARCHAR(255),
-    instagram_handle VARCHAR(255),
-    additional_links VARCHAR(255),
-    location_id BIGINT,
+-- CREATE TABLE media (
+--     media_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+--     website_url VARCHAR(255),
+--     facebook_url VARCHAR(255),
+--     instagram_handle VARCHAR(255),
+--     additional_links VARCHAR(255),
+--     location_id BIGINT,
     
-    CONSTRAINT fk_location_media
-        FOREIGN KEY (location_id)
-        REFERENCES locations(id)
-);
+--     CONSTRAINT fk_location_media
+--         FOREIGN KEY (location_id)
+--         REFERENCES locations(id)
+-- );

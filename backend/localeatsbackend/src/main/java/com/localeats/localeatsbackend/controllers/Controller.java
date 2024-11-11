@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.localeats.localeatsbackend.entities.Location;
 import com.localeats.localeatsbackend.entities.LocationPreview;
-import com.localeats.localeatsbackend.entities.Media;
+//import com.localeats.localeatsbackend.entities.Media;
 import com.localeats.localeatsbackend.services.LocationServiceImpl;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,15 +34,15 @@ public class Controller {
         locationServiceImpl.saveLocation(loc);
         return ResponseEntity.ok("Save successful.");
     }
-    @GetMapping("")
-    public ResponseEntity<Media> getMethodName() {
-        Media media = new Media();
-        media.setFacebookURL("");
-        media.setInstagramHandle("The fun farm!");
-        media.setAdditionalLinks("just a really fun farm!");
-        media.setWebsiteURL("saeg");
-        media.setId((long) 123);
-        return ResponseEntity.ok(media);
-    }
+    // @GetMapping("")
+    // public ResponseEntity<Media> getMethodName() {
+    //     Media media = new Media();
+    //     media.setFacebookURL("");
+    //     media.setInstagramHandle("The fun farm!");
+    //     media.setAdditionalLinks("just a really fun farm!");
+    //     media.setWebsiteURL("saeg");
+    //     media.setId((long) 123);
+    //     return ResponseEntity.ok(media);
+    // }
     
 }
