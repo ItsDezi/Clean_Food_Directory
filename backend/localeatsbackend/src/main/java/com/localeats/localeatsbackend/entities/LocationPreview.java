@@ -1,10 +1,10 @@
 package com.localeats.localeatsbackend.entities;
 
 public class LocationPreview {
-    private String latitude;
-    private String longitude;
+    private Float latitude;
+    private Float longitude;
     private String name;
-    public LocationPreview(String latitude, String longitude, String name) {
+    public LocationPreview(Float latitude, Float longitude, String name) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.name = name;

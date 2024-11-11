@@ -6,18 +6,18 @@ CREATE TABLE locations (
     address VARCHAR(255),
     city VARCHAR(255),
     state VARCHAR(100),
-    postal_code VARCHAR(15),
+    postalcode VARCHAR(12),
     country VARCHAR(100),
-    phone_number INT,
+    phone_number VARCHAR(20),
     email VARCHAR(255),
     open_timestamp TIMESTAMP,
     close_timestamp TIMESTAMP,
-    time_zone VARCHAR(100),  -- Storing as VARCHAR since SQL doesn’t natively support TimeZone
+    time_zone VARCHAR(4),  -- Storing as VARCHAR since SQL doesn’t natively support TimeZone
     notes TEXT,
     parking_available BOOLEAN,
-    latitude VARCHAR(12),
-    longitude VARCHAR(12),
-    last_updated DATE
+    latitude DECIMAL(8,6),
+    longitude DECIMAL(9,6),
+    last_updated TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP
 );
 
 

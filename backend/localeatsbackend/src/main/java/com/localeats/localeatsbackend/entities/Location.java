@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.TimeZone;
 
 import org.hibernate.annotations.Type;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.hibernate.annotations.DialectOverride.ColumnDefault;
 
 import jakarta.persistence.*;
@@ -26,16 +28,19 @@ public class Location {
     private String address;
     private String city;
     private String state;
-    private String postalCode;
+    @Column(columnDefinition = "VARCHAR(12)")
+    private String postalcode;
     private String country;
-    private Integer phoneNumber;
+    @Column(name = "phone_number")
+    private String phoneNumber;
     private String email;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "location")
     private Media media;
     //private String[] daysOpen;
     private Timestamp openTimestamp;
     private Timestamp closeTimestamp;
-    private TimeZone timeZone;
+    @Column(columnDefinition = "VARCHAR(4)")
+    private String timeZone;
     //private String[] paymentMethods;
     //private String[] seasons;
    //private String[] certifications;
@@ -43,14 +48,43 @@ public class Location {
     private boolean parkingAvailable;
     //@Column(name = "coordinates", columnDefinition = "NUMERIC[]")
     //private Double[] coordinates;
-    @Column(columnDefinition = "VARCHAR(12)")
-    private String latitude;
-    @Column(columnDefinition = "VARCHAR(12)")
-    private String longitude;
+    @Column(columnDefinition = "DECIMAL(8,6)")
+    private Float latitude;
+    @Column(columnDefinition = "DECIMAL(9,6)")
+    private Float longitude;
     //private String[] reviews;
-    private Date lastUpdated;
+    @Temporal(TemporalType.TIMESTAMP)
+    @LastModifiedDate
+    private Timestamp lastUpdated;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "location")//should probably change to be @ManytoMany in the future
     private List<Contributor> contributors = new ArrayList<>();
+    @Autowired
+    public Location(Long id, String name, String description, String address, String city, String state,
+            String postalcode, String country, String phoneNumber, String email, Media media, Timestamp openTimestamp,
+            Timestamp closeTimestamp, String timeZone, String notes, boolean parkingAvailable, Float latitude,
+            Float longitude, Timestamp lastUpdated, List<Contributor> contributors) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.postalcode = postalcode;
+        this.country = country;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.media = media;
+        this.openTimestamp = openTimestamp;
+        this.closeTimestamp = closeTimestamp;
+        this.timeZone = timeZone;
+        this.notes = notes;
+        this.parkingAvailable = parkingAvailable;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.lastUpdated = lastUpdated;
+        this.contributors = contributors;
+    }
+
     public Long getId() {
         return id;
     }
@@ -88,10 +122,10 @@ public class Location {
         this.state = state;
     }
     public String getPostalCode() {
-        return postalCode;
+        return postalcode;
     }
     public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+        this.postalcode = postalCode;
     }
     public String getCountry() {
         return country;
@@ -99,10 +133,10 @@ public class Location {
     public void setCountry(String country) {
         this.country = country;
     }
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
     public String getEmail() {
@@ -129,10 +163,10 @@ public class Location {
     public void setCloseTimestamp(Timestamp closeTimestamp) {
         this.closeTimestamp = closeTimestamp;
     }
-    public TimeZone getTimeZone() {
+    public String getTimeZone() {
         return timeZone;
     }
-    public void setTimeZone(TimeZone timeZone) {
+    public void setTimeZone(String timeZone) {
         this.timeZone = timeZone;
     }
     public String getNotes() {
@@ -147,22 +181,22 @@ public class Location {
     public void setParkingAvailable(boolean parkingAvailable) {
         this.parkingAvailable = parkingAvailable;
     }
-    public String getLatitude() {
+    public Float getLatitude() {
         return latitude;
     }
-    public void setLatitude(String latitude) {
+    public void setLatitude(Float latitude) {
         this.latitude = latitude;
     }
-    public String getLongitude() {
+    public Float getLongitude() {
         return longitude;
     }
-    public void setLongitude(String longitude) {
+    public void setLongitude(Float longitude) {
         this.longitude = longitude;
     }
-    public Date getLastUpdated() {
+    public Timestamp getLastUpdated() {
         return lastUpdated;
     }
-    public void setLastUpdated(Date lastUpdated) {
+    public void setLastUpdated(Timestamp lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
     public List<Contributor> getContributors() {
