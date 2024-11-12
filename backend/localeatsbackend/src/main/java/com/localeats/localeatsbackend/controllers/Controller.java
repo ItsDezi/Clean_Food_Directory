@@ -35,7 +35,7 @@ public class Controller {
         System.out.println("wooooooowaweewa");
         Location loc = requestObjects.getLocation();
         List<Contributor> tmp = loc.getContributors();
-        //System.out.println(requestObjects.getContributor().getContributorEmail());
+        System.out.println(requestObjects.getContributor().toString());
         Contributor tmpContributor = requestObjects.getContributor();
         tmpContributor.setLocation(loc);
         if (tmp == null)

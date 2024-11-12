@@ -17,19 +17,35 @@ public class Contributor {
     private String contributor_name;
     //@Column(name="contributor_email")
     private String contributor_email;
-
-    @Autowired
+    @Column(name = "date_contributed_on")
+    private Timestamp contributed_on;
+    @ManyToOne()//In the future this should probably be a ManyToMany mapping
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    private Location location;
+    // @Autowired
+    // public Contributor(String contributor_name, String contributor_email, Timestamp contributed_on) {
+    //     this.contributor_name = contributor_name;
+    //     this.contributor_email = contributor_email;
+    //     this.contributed_on = contributed_on;
+    // }
+    //@Autowired
     public Contributor(String contributor_name, String contributor_email) {
         this.contributor_name = contributor_name;
         this.contributor_email = contributor_email;
     }
     
-    public Contributor() {
-    }
+    // public Contributor() {
+    // }
+    //@Autowired
+    // public Contributor(String contributor_name, String contributor_email, Timestamp contributed_on, Location location) {
+    //     this.contributor_name = contributor_name;
+    //     this.contributor_email = contributor_email;
+    //     this.contributed_on = contributed_on;
+    //     this.location = location;
+    // }
 
-    @ManyToOne()//In the future this should probably be a ManyToMany mapping
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
-    private Location location;
+
+
     public String getContributorName() {
         return contributor_name;
     }
@@ -47,6 +63,27 @@ public class Contributor {
     }
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Timestamp getContributed_on() {
+        return contributed_on;
+    }
+
+    public void setContributed_on(Timestamp contributed_on) {
+        this.contributed_on = contributed_on;
+    }
+    @Override
+    public String toString() {
+        return "Contributor [id=" + id + ", contributor_name=" + contributor_name + ", contributor_email="
+                + contributor_email + ", location=" + location + "]";
     }
 
 }

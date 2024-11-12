@@ -33,8 +33,8 @@ CREATE TABLE contributors (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     contributor_name VARCHAR(255),
     contributor_email VARCHAR(255),
-    contributed_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     location_id BIGINT,
+    date_contributed_on TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
 
     
     CONSTRAINT fk_location
