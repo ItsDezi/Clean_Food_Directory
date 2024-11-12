@@ -53,15 +53,5 @@ public class Controller {
         return ResponseEntity.ok(locationServiceImpl.getAllPreviews());
     }
     
-    // @GetMapping("")
-    // public ResponseEntity<Media> getMethodName() {
-    //     Media media = new Media();
-    //     media.setFacebookURL("");
-    //     media.setInstagramHandle("The fun farm!");
-    //     media.setAdditionalLinks("just a really fun farm!");
-    //     media.setWebsiteURL("saeg");
-    //     media.setId((long) 123);
-    //     return ResponseEntity.ok(media);
-    // }
     
 }
