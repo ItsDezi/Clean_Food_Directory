@@ -45,6 +45,7 @@ public class Location {
     //private String[] seasons;
    //private String[] certifications;
     private String notes;
+    private boolean approved;
     private boolean parkingAvailable;
     //@Column(name = "coordinates", columnDefinition = "NUMERIC[]")
     //private Double[] coordinates;
@@ -76,63 +77,39 @@ public class Location {
 
     @Autowired
     public Location(Long id, String name, String description, String address, String city, String state,
-    String postalcode, String country, String phoneNumber, String email, Timestamp openTimestamp,
-    Timestamp closeTimestamp, String timeZone, String notes, boolean parkingAvailable, Float latitude,
-    Float longitude, Timestamp lastUpdated, String websiteURL, String facebookURL, String instagramHandle,
-    String additionalLinks, String twitterLink, String youtubeLink, String tiktokLink,
-    List<Contributor> contributors) {
-    this.id = id;
-    this.name = name;
-    this.description = description;
-    this.address = address;
-    this.city = city;
-    this.state = state;
-    this.postalcode = postalcode;
-    this.country = country;
-    this.phoneNumber = phoneNumber;
-    this.email = email;
-    this.openTimestamp = openTimestamp;
-    this.closeTimestamp = closeTimestamp;
-    this.timeZone = timeZone;
-    this.notes = notes;
-    this.parkingAvailable = parkingAvailable;
-    this.latitude = latitude;
-    this.longitude = longitude;
-    this.lastUpdated = lastUpdated;
-    this.websiteURL = websiteURL;
-    this.facebookURL = facebookURL;
-    this.instagramHandle = instagramHandle;
-    this.additionalLinks = additionalLinks;
-    this.twitterLink = twitterLink;
-    this.youtubeLink = youtubeLink;
-    this.tiktokLink = tiktokLink;
-    this.contributors = contributors;
+            String postalcode, String country, String phoneNumber, String email, Timestamp openTimestamp,
+            Timestamp closeTimestamp, String timeZone, String notes, boolean approved, boolean parkingAvailable,
+            Float latitude, Float longitude, Timestamp lastUpdated, String websiteURL, String facebookURL,
+            String instagramHandle, String additionalLinks, String twitterLink, String youtubeLink, String tiktokLink,
+            List<Contributor> contributors) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.postalcode = postalcode;
+        this.country = country;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.openTimestamp = openTimestamp;
+        this.closeTimestamp = closeTimestamp;
+        this.timeZone = timeZone;
+        this.notes = notes;
+        this.approved = approved;
+        this.parkingAvailable = parkingAvailable;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.lastUpdated = lastUpdated;
+        this.websiteURL = websiteURL;
+        this.facebookURL = facebookURL;
+        this.instagramHandle = instagramHandle;
+        this.additionalLinks = additionalLinks;
+        this.twitterLink = twitterLink;
+        this.youtubeLink = youtubeLink;
+        this.tiktokLink = tiktokLink;
+        this.contributors = contributors;
     }
-    // public Location(Long id, String name, String description, String address, String city, String state,
-    //         String postalcode, String country, String phoneNumber, String email, /*Media media,*/ Timestamp openTimestamp,
-    //         Timestamp closeTimestamp, String timeZone, String notes, boolean parkingAvailable, Float latitude,
-    //         Float longitude, Timestamp lastUpdated, List<Contributor> contributors) {
-    //     this.id = id;
-    //     this.name = name;
-    //     this.description = description;
-    //     this.address = address;
-    //     this.city = city;
-    //     this.state = state;
-    //     this.postalcode = postalcode;
-    //     this.country = country;
-    //     this.phoneNumber = phoneNumber;
-    //     this.email = email;
-    //     //this.media = media;
-    //     this.openTimestamp = openTimestamp;
-    //     this.closeTimestamp = closeTimestamp;
-    //     this.timeZone = timeZone;
-    //     this.notes = notes;
-    //     this.parkingAvailable = parkingAvailable;
-    //     this.latitude = latitude;
-    //     this.longitude = longitude;
-    //     this.lastUpdated = lastUpdated;
-    //     this.contributors = contributors;
-    // }
 
     public Long getId() {
         return id;
@@ -310,6 +287,14 @@ public class Location {
 
     public void setTiktokLink(String tiktokLink) {
         this.tiktokLink = tiktokLink;
+    }
+
+    public boolean isApproved() {
+        return approved;
+    }
+
+    public void setApproved(boolean approved) {
+        this.approved = approved;
     }
     
 }

@@ -24,7 +24,8 @@ CREATE TABLE locations (
     additional_links VARCHAR(255),
     twitter_url VARCHAR(255),
     youtube_url VARCHAR(255),
-    tiktok_url VARCHAR(255)
+    tiktok_url VARCHAR(255),
+    approved BOOLEAN DEFAULT FALSE
 );
 
 
@@ -32,7 +33,9 @@ CREATE TABLE contributors (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     contributor_name VARCHAR(255),
     contributor_email VARCHAR(255),
+    contributed_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     location_id BIGINT,
+
     
     CONSTRAINT fk_location
         FOREIGN KEY (location_id) 
