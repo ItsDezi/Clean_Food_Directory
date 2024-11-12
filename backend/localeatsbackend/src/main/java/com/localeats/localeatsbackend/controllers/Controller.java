@@ -20,8 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-
 @RestController
 public class Controller {
     @Autowired
@@ -31,7 +29,7 @@ public class Controller {
     // public ResponseEntity<List<LocationPreview>> getNameAndCoordinates() {
     //     return ResponseEntity.ok(locationServiceImpl.getAllPreviews());
     // }
-    @PostMapping("")
+    @PostMapping("upload_location")
     public ResponseEntity<String> saveLocation(@RequestBody ContributorLocationWrapper requestObjects) throws Exception {
         //TODO: process POST request
         System.out.println("wooooooowaweewa");
@@ -50,6 +48,11 @@ public class Controller {
         //contributorServiceImpl.save
         return ResponseEntity.ok("Save successful.");
     }
+    @GetMapping("")
+    public ResponseEntity<List<LocationPreview>> getLocationPreviews() {
+        return ResponseEntity.ok(locationServiceImpl.getAllPreviews());
+    }
+    
     // @GetMapping("")
     // public ResponseEntity<Media> getMethodName() {
     //     Media media = new Media();

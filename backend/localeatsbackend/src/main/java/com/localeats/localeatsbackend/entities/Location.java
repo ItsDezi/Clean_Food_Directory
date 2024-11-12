@@ -70,6 +70,10 @@ public class Location {
     private String tiktokLink;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "location")//should probably change to be @ManytoMany in the future
     private List<Contributor> contributors = new ArrayList<>();
+    
+    public Location() {
+    }
+
     @Autowired
     public Location(Long id, String name, String description, String address, String city, String state,
     String postalcode, String country, String phoneNumber, String email, Timestamp openTimestamp,

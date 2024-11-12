@@ -25,15 +25,17 @@ public class LocationServiceImpl implements LocationService{
         List<LocationPreview> previews = new ArrayList<>();
         for(Location loc : locationRepository.findAll())
         {
+            System.out.println(loc.getId());
             previews.add(new LocationPreview(loc.getLatitude(), loc.getLongitude(), loc.getName()));
         }
+        System.out.println(previews);
         return previews;
     }
     public void saveLocation(Location location) throws Exception
     {
-        if (location.getAddress() == null && (location.getLatitude() == null && location.getLongitude() == null))
+        if (location.getAddress() == null && (location.getLatitude() == null || location.getLongitude() == null))
         {
-            throw new Exception("Coordinates and address are null.");
+            throw new Exception("Coordinates and/or address are null.");
         }
         // else if(location.getCoordinates().length != 2)
         // {

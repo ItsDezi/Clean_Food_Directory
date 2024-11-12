@@ -23,6 +23,10 @@ public class Contributor {
         this.contributor_name = contributor_name;
         this.contributor_email = contributor_email;
     }
+    
+    public Contributor() {
+    }
+
     @ManyToOne()//In the future this should probably be a ManyToMany mapping
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location;
