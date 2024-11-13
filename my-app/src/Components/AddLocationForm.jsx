@@ -4,97 +4,53 @@ import {useForm} from "react-hook-form";
 import classNames from "classnames";
 import InputField from './InputField';
 import '../styles/FormTest.css';
+import { FormControl, Tab, Tabs, Form } from 'react-bootstrap';
+import CoordinatesInput from './CoordinatesInput';
+import AddressInput from './AddressInput';
 function AddLocationForm() {
-  const [submitted, setSubmitted] = useState();
-  const {
-    register,
-    handleSubmit,
-    formState: {errors},
-    reset,
-    watch,
-  } = useForm({defaultValues: {accountType: "business"}});
-  console.log('form errors', errors);
-  console.log('account type', watch('accountType'));
-  const sendData = (data) => {
-    setSubmitted(true);
-    console.log('submitted', data);
-  };
+  const [findBy, setfindBy] = useState("address");
+
+  const TabComponents = ()=>{
+    if(findBy == "coordinates")
+    {
+      return (
+        <CoordinatesInput />
+      )
+    }
+    else{
+      return(
+        <AddressInput />
+      )
+    }
+  }
 
   return (
     <div className={"container form-container mt-2"}>
-      <form className={"col-md-6"} onSubmit={handleSubmit(sendData)}>
-        <fieldset>
-          <legend>Account Info</legend>
-          <InputField
-            fieldId={"accountNumber"}
-            fieldLabel={"Account Number"}
-            errors={errors}
-            register={register}
-            inputType={"number"}
-          />
-          <InputField
-            fieldId={"routingNumber"}
-            fieldLabel={"Routing Number"}
-            errors={errors}
-            register={register}
-            inputType={"number"}
-            validate={(v) => v.length === 9 || '9 digits needed'}
-          />
-        </fieldset>
-        <fieldset>
-          <legend>Account Type</legend>
-          <div className={"form-check"}>
-            <input type={"radio"} className={"form-check-input"} id={"businessAccount"} value={"business"} {...register("accountType")}/>
-            <label htmlFor={"businessAccount"} className={"form-check-label"}>Business</label>
-          </div>
-          <div className={"form-check"}>
-            <input type={"radio"} className={"form-check-input"} id={"personalAccount"} value={"personal"} {...register("accountType")} />
-            <label htmlFor={"personalAccount"} className={"form-check-label"} >Personal</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Account Owner</legend>
-          {watch('accountType') === 'business' &&
-            <InputField
-              fieldId={"businessName"}
-              fieldLabel={"Business Name"}
-              errors={errors}
-              register={register}
-              />
-          }
-          {watch('accountType') === 'personal' &&
-            <>
-              <InputField
-                fieldId={"firstName"}
-                fieldLabel={"First Name"}
-                errors={errors}
-                register={register}
-              />
-              <InputField
-                fieldId={"lastName"}
-                fieldLabel={"Last Name"}
-                errors={errors}
-                register={register}
-              />
-            </>
-          }
-        </fieldset>
-        <div className={"mt-2"}>
-          <button className={'btn btn-primary me-2'}>Submit</button>
-          <button
-            className={'btn btn-secondary'}
-            type={"button"}
-            onClick={() => {reset(); setSubmitted();}}
+      <Form>
+        <Form.Group>
+          <Form.Label>Location name</Form.Label>
+          <Form.Control
+            type="name"
+            placeholder="Marthas fresh eggs"
+          ></Form.Control>
+          <Form.Text className="text-muted">
+            If it has no formal name, just add what they have and where it is.
+            (i.e. Eggs in Boston)
+          </Form.Text>
+        </Form.Group>
+        <Form.Group>
+          <Tabs
+            id="findBy"
+            activeKey={findBy}
+            onSelect={(k) => setfindBy(k)}
+            className="mb-3"
           >
-            Reset
-          </button>
-        </div>
-        {submitted &&
-          <div className={"alert alert-success mt-2"}>
-            Submitted
-          </div>
-        }
-      </form>
+            <Tab eventKey="address" title="Address"></Tab>
+            <Tab eventKey="coordinates" title="Coordinates"></Tab>
+          </Tabs>
+        </Form.Group>
+        <TabComponents />
+      </Form>
     </div>
   );
 }
