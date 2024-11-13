@@ -21,7 +21,7 @@ function AddLocationForm() {
   };
 
   return (
-    <div className={"container mt-2"}>
+    <div className={"container form-container mt-2"}>
       <form className={"col-md-6"} onSubmit={handleSubmit(sendData)}>
         <fieldset>
           <legend>Account Info</legend>
