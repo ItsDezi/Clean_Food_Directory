@@ -1,6 +1,6 @@
 import { FormControl, Tab, Tabs, Form, Row, Col } from 'react-bootstrap';
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 function AddressInput() {
     const [country, setCountry] = useState("US");
     const [province, setProvince] = useState();
@@ -14,7 +14,11 @@ function AddressInput() {
       const provinces = [
         "AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC", "SK", "YT"
       ];
-      
+    
+    //   useEffect(() => {
+    //     console.log("BRUH", country);
+    //   }, [country])
+
 return(
 <>
 
@@ -31,7 +35,7 @@ return(
   <Row className="mb-3">
   <Form.Group as={Col} controlId="formGridState">
       <Form.Label>Country</Form.Label>
-      <Form.Select defaultValue="US" onChange={(e) => setCountry({country: e.target.value})}>
+      <Form.Select defaultValue="US" onChange={(e) => setCountry(e.target.value)}>
         <option value="US">United States</option>
         <option value="CA">Canada</option>
       </Form.Select>
