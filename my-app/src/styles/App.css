@@ -17,9 +17,27 @@
   padding-top: 25vh;
   /*margin-left: -30vw;*/
   color: var(--primary);
-  font-size:xx-large;
-  font-style: italic;
+  font-size:xx-large ;
+  font-style: italic !important;
   justify-content: center;
+}
+.landing-page-slogan h1 {
+  font-size: 65px !important;
+  font-style: italic !important;
+  font-weight: bold;
+  margin: auto;
+}
+.landing-page-slogan h3 {
+  font-size: 30px !important;
+  font-style: italic !important;
+  font-weight: bold;
+  margin: auto;
+}
+.landing-page-slogan h5 {
+  font-size: 30px !important;
+  font-style: italic !important;
+  font-weight: bold;
+  margin: auto;
 }
 .map-container {
   width: 80vw;

@@ -1,6 +1,10 @@
 :root {
   --primary: #0c5116;
   --secondary: #ffffff;
+  --tertiary: #1aad2f;
+  --bs-border-color:var(--primary);
+  --bs-border-width: 2px;
+  --bs-border-radius:8px;
 }
 body {
   margin: 0;
