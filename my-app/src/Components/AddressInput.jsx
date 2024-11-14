@@ -47,6 +47,9 @@ return(
         {country == "US" ? states.map(state => <option value={state}>{state}</option>) : provinces.map(province => <option value={province}>{province}</option>)}
       </Form.Select>
     </Form.Group>
+    </Row>
+
+  <Row className="mb-3">
 
     <Form.Group as={Col} controlId="formGridCity">
       <Form.Label>City</Form.Label>
