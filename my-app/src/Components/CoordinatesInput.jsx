@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import "leaflet/dist/leaflet.css";
 import {
   MapContainer,
@@ -6,9 +7,8 @@ import {
   Popup,
   useMapEvents,
 } from "react-leaflet";
-import MarkerClusterGroup from "react-leaflet-cluster";
 import { useState, useEffect } from "react";
-import { DivIcon, Icon, divIcon, map, point } from "leaflet";
+//import { DivIcon, Icon, divIcon, map, point } from "leaflet";
 import L from "leaflet";
 
 function CoordinatesInput() {
