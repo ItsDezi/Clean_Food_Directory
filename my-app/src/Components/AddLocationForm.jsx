@@ -26,7 +26,7 @@ function AddLocationForm() {
 
   return (
     <div className={"container form-container mt-2"}>
-      <Form>
+      <Form className={"add-location-form"}>
         <Form.Group>
           <Form.Label>Location name</Form.Label>
           <Form.Control

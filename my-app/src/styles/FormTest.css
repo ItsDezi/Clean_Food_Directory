@@ -180,3 +180,6 @@ textarea.form-control {
     justify-content: center;
     background-color: #0d6efd;
 }
+.add-location-form{
+    width: 45vw;
+}

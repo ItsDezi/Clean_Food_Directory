@@ -57,7 +57,7 @@ function CoordinatesInput() {
   return (
     <div>
       <MapContainer
-        className="map-container"
+        className="map-container-contribute"
         center={[51.505, -0.09]}
         minZoom={2}
         zoom={13}
