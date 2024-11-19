@@ -34,10 +34,10 @@ function Places ({setPlace}) {
     return(
         <>
         <article className="rounded-md">
-            <div className="flex items-center justify-center w-full px-2 rounded-md bg-white">
-                <div ><IoSearchOutline size={18}/></div>
-                <input className="px-4 py-2 outline-none w-full" placeholder="Enter endpoint" value = {value} onChange={(e) => setValue(e.target.value)} type="text" name="place" id="place"/>
-                <div><IoCloseOutline size={18}/></div>
+            <div>
+                {/* <div ><IoSearchOutline size={18}/></div> */}
+                <input className="add-location-form-search-bar" placeholder="123 Blueberry lane" value = {value} onChange={(e) => setValue(e.target.value)} type="text" name="place" id="place"/>
+                {/* <div><IoCloseOutline size={18}/></div> */}
             </div>
         </article>
         <article className="max-w-sm">

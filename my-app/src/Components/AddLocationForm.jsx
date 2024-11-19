@@ -44,8 +44,10 @@ function AddLocationForm() {
             (i.e. Eggs in Boston)
           </Form.Text>
         </Form.Group>
-
+        <Form.Group>
+          <Form.Label>Search for the location or find it on the map if there is no official address.</Form.Label>
         <TabComponents />
+        </Form.Group>
       </Form>
     </div>
   );
