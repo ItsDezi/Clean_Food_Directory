@@ -96,6 +96,13 @@
   box-shadow: 0 0 0px 5px var(--primary);
 }
 
+.text-cut{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -124,3 +131,4 @@
     transform: rotate(360deg);
   }
 }
+

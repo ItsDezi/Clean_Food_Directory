@@ -10,18 +10,29 @@ import CoordinatesInput from './CoordinatesInput';
 import AddressInput from './AddressInput';
 import { template } from '../formDatatemplate';
 import { FormContext } from '../Contexts/FormContext';
+import Places from './Places';
 function AddLocationForm() {
-  const { data, updateData } = useContext(FormContext); // Access context
+  //const { data, updateData } = useContext(FormContext); // Access context
   const [findBy, setfindBy] = useState("address");
+  const [place, setPlace] = useState({geometry: {coordinates:[0,0]}});
 
   const TabComponents = () => {
-    if (findBy === "coordinates") {
-      return <CoordinatesInput />;
-    } else {
-      return <AddressInput />;
-    }
+      return (
+        <>
+      <Places setPlace = {ting}/>
+      <CoordinatesInput place = {place.geometry.coordinates} setPlace={ting2}/>
+      
+      </>
+  )
   };
-
+  function ting(x) {
+    setPlace(x);
+    console.log("tingy", x);
+  }
+  function ting2(x) {
+    setPlace(x);
+    console.log("tingy2", x);
+  }
   return (
     <div className="container form-container mt-2">
       <Form className="add-location-form">
@@ -33,17 +44,7 @@ function AddLocationForm() {
             (i.e. Eggs in Boston)
           </Form.Text>
         </Form.Group>
-        <Form.Group>
-          <Tabs
-            id="findBy"
-            activeKey={findBy}
-            onSelect={(k) => setfindBy(k)}
-            className="mb-3"
-          >
-            <Tab eventKey="address" title="Address"></Tab>
-            <Tab eventKey="coordinates" title="Coordinates"></Tab>
-          </Tabs>
-        </Form.Group>
+
         <TabComponents />
       </Form>
     </div>
