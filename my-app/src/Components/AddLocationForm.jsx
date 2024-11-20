@@ -10,11 +10,14 @@ import CoordinatesInput from './CoordinatesInput';
 import AddressInput from './AddressInput';
 import { template } from '../formDatatemplate';
 import { FormContext } from '../Contexts/FormContext';
+//import Button from 'react-bootstrap/Button';
+
 import Places from './Places';
 function AddLocationForm() {
   //const { data, updateData } = useContext(FormContext); // Access context
   const [findBy, setfindBy] = useState("address");
   const [place, setPlace] = useState({geometry: {coordinates:[0,0]}});
+  const [validated, setValidated] = useState(false);
 
   const TabComponents = () => {
       return (
@@ -33,12 +36,22 @@ function AddLocationForm() {
     setPlace(x);
     console.log("tingy2", x);
   }
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
+  };
   return (
-    <div className="container form-container mt-2">
-      <Form className="add-location-form">
+    <div noValidate validated={validated} className="container form-container mt-2">
+      <Form className="add-location-form" onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>Location name</Form.Label>
-          <Form.Control type="text" placeholder="Marthas fresh eggs" />
+          <Form.Control required type="text" placeholder="Marthas fresh eggs" />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Text className="text-muted">
             If it has no formal name, just add what they have and where it is.
             (i.e. Eggs in Boston)
@@ -71,38 +84,50 @@ function AddLocationForm() {
 
         <Form.Group>
           <Form.Label>Website</Form.Label>
-          <Form.Control id='websiteURL' type="URL" placeholder="www.marthaeggs.com" />
+          <Form.Control id='websiteURL' type="url" placeholder="www.marthaeggs.com" />
         </Form.Group>
 
         <Form.Group>
           <Form.Label>Instagram</Form.Label>
-          <Form.Control id='instagramHandle' type="URL" placeholder="@eggs_by_martha" />
+          <Form.Control id='instagramHandle' type="url" placeholder="@eggs_by_martha" />
         </Form.Group>
 
         <Form.Group>
           <Form.Label>Facebook</Form.Label>
-          <Form.Control id='facebookURL' type="URL" placeholder="www.facebook.com/eggs_by_martha" />
+          <Form.Control id='facebookURL' type="url" placeholder="www.facebook.com/eggs_by_martha" />
         </Form.Group>
 
         <Form.Group>
           <Form.Label>Youtube</Form.Label>
-          <Form.Control id='youtubeLink' type="URL" placeholder="www.youtube.com/eggs_by_martha" />
+          <Form.Control id='youtubeLink' type="url" placeholder="www.youtube.com/eggs_by_martha" />
         </Form.Group>
 
         <Form.Group>
           <Form.Label>Twitter</Form.Label>
-          <Form.Control id='twitterLink' type="URL" placeholder="@eggTweets" />
+          <Form.Control id='twitterLink' type="url" placeholder="@eggTweets" />
         </Form.Group>
 
         <Form.Group>
           <Form.Label>Tik Tok</Form.Label>
-          <Form.Control id='tiktokLink' type="URL" placeholder="@marthasTikToks" />
+          <Form.Control id='tiktokLink' type="url" placeholder="@marthasTikToks" />
         </Form.Group>
 
         <Form.Group>
           <Form.Label>Additional Links</Form.Label>
-          <Form.Control id='additionalLinks' type="URL" placeholder="www.yelp.com/eggs_by_martha" />
+          <Form.Control id='additionalLinks' type="url" placeholder="www.yelp.com/eggs_by_martha" />
         </Form.Group>
+
+        <Form.Group>
+          <Form.Label>Your name</Form.Label>
+          <Form.Control id='contributor_name' type="name" placeholder="John Doe" />
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label>Your email</Form.Label>
+          <Form.Control id='contributor_email' type="email" placeholder="contributor@example.com" />
+        </Form.Group>
+
+          <Form.Control id='submit_btn' type="submit" />
       </Form>
     </div>
   );
