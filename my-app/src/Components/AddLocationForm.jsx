@@ -10,6 +10,7 @@ import CoordinatesInput from './CoordinatesInput';
 import AddressInput from './AddressInput';
 import { template } from '../formDatatemplate';
 import { FormContext } from '../Contexts/FormContext';
+import { getCurrentDate } from './GetCurrentDate';
 //import Button from 'react-bootstrap/Button';
 
 import Places from './Places';
@@ -17,6 +18,7 @@ function AddLocationForm() {
   //const { data, updateData } = useContext(FormContext); // Access context
   const [findBy, setfindBy] = useState("address");
   const [place, setPlace] = useState({geometry: {coordinates:[0,0]}});
+  const [ error, setError ] = useState("");
   const [ formData, setFormData ] = useState({
     location: {
       address: "",
@@ -31,7 +33,7 @@ function AddLocationForm() {
       name: "",
       notes: "",
       openTimestamp: "",
-      parkingAvailable: "",
+      parkingAvailable: false,
       phoneNumber: "",
       postalcode: "",
       state: "",
@@ -80,14 +82,61 @@ function AddLocationForm() {
     event.preventDefault();
     const form = event.currentTarget;
     console.log(form);
-    if (form.checkValidity() === false) {
+    // if (form.checkValidity() === false) {
+    //   event.preventDefault();
+    //   event.stopPropagation();
+    //   console.log("validity check failed");
+    // }
+    if (validateForm === false) {
       event.preventDefault();
       event.stopPropagation();
       console.log("validity check failed");
     }
-    console.log(formData);
+    else
+    {
+      console.log("get that date yall!",getCurrentDate())
+      setFormData({ ...formData, 
+        location: {
+          ...formData.location,
+          lastUpdated: getCurrentDate()
+        },
+        contributor: {
+          ...formData.contributor,
+          contributed_on: getCurrentDate()
+        }
+        });
+      //complete submission here
+      console.log("Heres da form data!",formData);
+    }
   }
+  function validateForm() {
+    if(formData.location.name.length <= 0)
+    {
+      setError("Please enter a name for the location!");
+      return false;
+    }
+    else if(formData.location.latitude == undefined || formData.location.latitude == null || formData.location.latitude == 0 || formData.location.longitude == undefined || formData.location.longitude == null || formData.location.longitude == 0)
+    {
+      setError("Please set a valid location!");
+      return false;
 
+    }
+    else if(formData.contributor.contributor_name == undefined || formData.contributor.contributor_name == null || formData.contributor.contributor_name == "" || formData.contributor.contributor_name.length == 0 )
+    {
+      setError("Please enter your name.");
+      return false;
+
+    }
+    else if(formData.contributor.contributor_email == undefined || formData.contributor.contributor_email == null || formData.contributor.contributor_email == "" || formData.contributor.contributor_email.length == 0)
+      {
+        setError("Please enter your email.");
+        return false;
+      }
+    else
+    {
+      return true;
+    }
+  }
   const handleChange = (e) =>{
     //e.preventDefault();
     //console.log(e.target.value);
@@ -102,6 +151,30 @@ function AddLocationForm() {
       }
       });
 
+  }
+  const handleContributorChange = (e) =>{
+    //e.preventDefault();
+    //console.log(e.target.value);
+    console.log(e);
+    const attribute = e.target.id;
+    console.log(formData);
+    //setFormData((prevFormData) => ({ ...prevFormData.location, [e.target.id]:(e.target.value) }));
+    setFormData({ ...formData, 
+      contributor: {
+        ...formData.contributor,
+        [e.target.id]:(e.target.value)
+      }
+      });
+
+  }
+  const handleParkingCheck = () => {
+    const tmp = !formData.location.parkingAvailable;
+    setFormData({ ...formData, 
+      location: {
+        ...formData.location,
+        parkingAvailable:(tmp)
+      }
+      });
   }
   return (
     <div className="container form-container mt-2">
@@ -137,7 +210,7 @@ function AddLocationForm() {
         </Form.Group>
 
         <Form.Group className='form-checkbox'>
-          <Form.Check label="Parking available" id='parkingAvailable' type="checkbox" onChange={(e) => {handleChange(e)}}/>
+          <Form.Check label="Parking available" id='parkingAvailable' type="checkbox" onChange={(e) => {handleParkingCheck()}}/>
         </Form.Group>
 
         <Form.Group>
@@ -177,12 +250,12 @@ function AddLocationForm() {
 
         <Form.Group>
           <Form.Label>Your name</Form.Label>
-          <Form.Control id='contributor_name' type="name" placeholder="John Doe" />
+          <Form.Control id='contributor_name' type="name" placeholder="John Doe" onChange={(e) => {handleContributorChange(e)}}/>
         </Form.Group>
 
         <Form.Group>
           <Form.Label>Your email</Form.Label>
-          <Form.Control id='contributor_email' type="email" placeholder="contributor@example.com" />
+          <Form.Control id='contributor_email' type="email" placeholder="contributor@example.com" onChange={(e) => {handleContributorChange(e)}}/>
         </Form.Group>
 
           <Form.Control id='submit_btn' type="submit" />
