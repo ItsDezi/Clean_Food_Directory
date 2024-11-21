@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <FormProvider>
           <Routes>
-            <Route path="/addListing" element={<AddLocationForm/>}/>
+            <Route path="/contribute" element={<AddLocationForm/>}/>
             <Route path="/" element={<Home/>}/>
           </Routes>
           {/* <div id = "home">

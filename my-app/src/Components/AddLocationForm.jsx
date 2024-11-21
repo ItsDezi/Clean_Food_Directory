@@ -11,8 +11,8 @@ import AddressInput from './AddressInput';
 import { template } from '../formDatatemplate';
 import { FormContext } from '../Contexts/FormContext';
 import { getCurrentDate } from './GetCurrentDate';
+import { uploadData } from '../Services/apiService';
 //import Button from 'react-bootstrap/Button';
-
 import Places from './Places';
 function AddLocationForm() {
   //const { data, updateData } = useContext(FormContext); // Access context
@@ -78,7 +78,7 @@ function AddLocationForm() {
     setPlace(x);
     console.log("tingy2", x);
   }
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
     console.log(form);
@@ -94,21 +94,32 @@ function AddLocationForm() {
     }
     else
     {
-      console.log("get that date yall!",getCurrentDate())
-      setFormData({ ...formData, 
-        location: {
-          ...formData.location,
-          lastUpdated: getCurrentDate()
-        },
-        contributor: {
-          ...formData.contributor,
-          contributed_on: getCurrentDate()
-        }
-        });
+      // console.log("get that date yall!",getCurrentDate())
+      // setFormData({ ...formData, 
+      //   location: {
+      //     ...formData.location,
+      //     lastUpdated: getCurrentDate()
+      //   },
+      //   contributor: {
+      //     ...formData.contributor,
+      //     contributed_on: getCurrentDate()
+      //   }
+      //   });
       //complete submission here
+      // fetch('http://localhost:8080/api/contribute', {
+      //   method: 'POST', 
+      //   headers: { "Content-Type": "application/json"},
+      //   body: JSON.stringify(formData)
+      // }).then(() => {
+      //   console.log('new posting added')
+      // })
+      event.preventDefault();
+      event.stopPropagation();
+      uploadData(formData);
       console.log("Heres da form data!",formData);
     }
   }
+
   function validateForm() {
     if(formData.location.name.length <= 0)
     {

@@ -15,12 +15,14 @@ import com.localeats.localeatsbackend.services.ContributorServiceImpl;
 //import com.localeats.localeatsbackend.entities.Media;
 import com.localeats.localeatsbackend.services.LocationServiceImpl;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class Controller {
     @Autowired
     LocationServiceImpl locationServiceImpl;
@@ -29,7 +31,7 @@ public class Controller {
     // public ResponseEntity<List<LocationPreview>> getNameAndCoordinates() {
     //     return ResponseEntity.ok(locationServiceImpl.getAllPreviews());
     // }
-    @PostMapping("upload_location")
+    @PostMapping("/contribute")
     public ResponseEntity<String> saveLocation(@RequestBody ContributorLocationWrapper requestObjects) throws Exception {
         //TODO: process POST request
         System.out.println("wooooooowaweewa");

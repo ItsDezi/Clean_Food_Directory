@@ -32,7 +32,7 @@ function Navbar() {
               <a href='/#map' className={`${styles.navLink}`}>Map</a>
             </li>
             <li onClick={removeActive}>
-              <a href='/addListing' className={`${styles.navLink}`}>Contribute</a>
+              <a href='/contribute' className={`${styles.navLink}`}>Contribute</a>
             </li>
             <li onClick={removeActive}>
               <a href='#home' className={`${styles.navLink}`}>All products</a>
