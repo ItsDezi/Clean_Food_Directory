@@ -137,11 +137,11 @@ function AddLocationForm() {
 
         <Form.Group>
           <Form.Label>Instagram</Form.Label>
-          <Form.Control id='instagramHandle' type="url" placeholder="@eggs_by_martha" onChange={(e) => {handleChange(e)}}/>
+          <Form.Control id='instagramHandle' type="text" placeholder="@eggs_by_martha" onChange={(e) => {handleChange(e)}}/>
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Facebook</Form.Label>
+          <Form.Label>Facebook Page</Form.Label>
           <Form.Control id='facebookURL' type="url" placeholder="www.facebook.com/eggs_by_martha" onChange={(e) => {handleChange(e)}}/>
         </Form.Group>
 
@@ -152,12 +152,12 @@ function AddLocationForm() {
 
         <Form.Group>
           <Form.Label>Twitter</Form.Label>
-          <Form.Control id='twitterLink' type="url" placeholder="@eggTweets" onChange={(e) => {handleChange(e)}}/>
+          <Form.Control id='twitterLink' type="text" placeholder="@eggTweets" onChange={(e) => {handleChange(e)}}/>
         </Form.Group>
 
         <Form.Group>
           <Form.Label>Tik Tok</Form.Label>
-          <Form.Control id='tiktokLink' type="url" placeholder="@marthasTikToks" onChange={(e) => {handleChange(e)}}/>
+          <Form.Control id='tiktokLink' type="text" placeholder="@marthasTikToks" onChange={(e) => {handleChange(e)}}/>
         </Form.Group>
 
         <Form.Group>
