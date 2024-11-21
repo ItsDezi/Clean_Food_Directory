@@ -58,6 +58,16 @@ function AddLocationForm() {
       </>
   )
   };
+  useEffect(() => {//This useEffect is in place to ensure that the formData is updated everytime a new place is selected/entered
+    setFormData({ ...formData, 
+      location: {
+        ...formData.location,
+        latitude:place.geometry.coordinates[1],
+        longitude: place.geometry.coordinates[0]
+      }
+      });
+  }, [place]);
+
   function ting(x) {
     setPlace(x);
     console.log("tingy", x);
