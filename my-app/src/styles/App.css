@@ -138,6 +138,10 @@ background-color: var(--primary);
   border-width: 2px;
   border-style: solid;
 }
+.popup-text{
+color: black !important;
+font: black !important;
+}
 .text-cut{
   display: -webkit-box;
   -webkit-box-orient: vertical;

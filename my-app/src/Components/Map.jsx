@@ -8,6 +8,7 @@ import { DivIcon, Icon, divIcon, map, point } from "leaflet";
 import L from 'leaflet';
 import { getLocationPreviews } from '../Services/apiService';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Map() {
   const [loading, setLoading] = useState(false);
@@ -16,7 +17,8 @@ export default function Map() {
     type marker = {
       latitude: number,
       longitude: number,
-      name: String
+      name: String,
+      id: number
         // geocode:[number, number],
         // popUp: String
     }
@@ -69,7 +71,11 @@ const createClusterCustomIcon = function (this:any, cluster:any) {
         {/* Mapping through the markers */}
         {markers.map((marker) => (
           <Marker position={[marker.latitude, marker.longitude]} icon={customIcon}>
-            <Popup>{marker.name}</Popup>
+            <Popup>
+            <Link to={`/details?markerId=${marker.id}`}>
+              <p className='popup-text'>{marker.name}</p>
+            </Link>
+              </Popup>
           </Marker>
         ))}
       </MarkerClusterGroup>
