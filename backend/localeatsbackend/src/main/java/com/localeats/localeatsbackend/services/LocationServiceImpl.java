@@ -26,7 +26,7 @@ public class LocationServiceImpl implements LocationService{
         for(Location loc : locationRepository.findAll())
         {
             System.out.println(loc.getId());
-            previews.add(new LocationPreview(loc.getLatitude(), loc.getLongitude(), loc.getName()));
+            previews.add(new LocationPreview(loc.getLatitude(), loc.getLongitude(), loc.getName(), loc.getId()));
         }
         System.out.println(previews);
         return previews;

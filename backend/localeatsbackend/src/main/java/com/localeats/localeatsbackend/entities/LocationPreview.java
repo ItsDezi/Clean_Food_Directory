@@ -4,10 +4,20 @@ public class LocationPreview {
     private Float latitude;
     private Float longitude;
     private String name;
-    public LocationPreview(Float latitude, Float longitude, String name) {
+    private Long id;
+
+    public LocationPreview(Float latitude, Float longitude, String name, Long id) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.name = name;
+        this.id = id;
+    }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

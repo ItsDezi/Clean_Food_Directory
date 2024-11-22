@@ -11,3 +11,15 @@ export const uploadData = async (formData) => {
       //throw error;
     }
   }
+
+  export const getLocationPreviews = async () => {
+    const response = await axios.get('http://localhost:8080/api/')
+    .then(response => {
+      console.log("apiService", response.data);
+      return(response.data);
+    }, error => {
+      console.log(error);
+    });
+    console.log("response", response);
+    return response;
+  }

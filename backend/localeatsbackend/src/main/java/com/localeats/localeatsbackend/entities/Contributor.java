@@ -33,6 +33,9 @@ public class Contributor {
         this.contributor_name = contributor_name;
         this.contributor_email = contributor_email;
     }
+    public Contributor() {
+        
+    }
     
     // public Contributor() {
     // }

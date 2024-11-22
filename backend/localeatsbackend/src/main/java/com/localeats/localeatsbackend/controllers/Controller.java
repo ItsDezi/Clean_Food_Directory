@@ -50,7 +50,7 @@ public class Controller {
         //contributorServiceImpl.save
         return ResponseEntity.ok("Save successful.");
     }
-    @GetMapping("")
+    @GetMapping()
     public ResponseEntity<List<LocationPreview>> getLocationPreviews() {
         return ResponseEntity.ok(locationServiceImpl.getAllPreviews());
     }
