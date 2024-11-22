@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useState } from 'react';
 import styles from '../styles/Navbar.module.css';
+import { APP_TITLE } from "../Assets/constants";
 function Navbar() {
   // adding the states 
   const [isActive, setIsActive] = useState(false);
@@ -20,7 +21,7 @@ function Navbar() {
       <span className="">
         <div className={`${styles.homebuttonnav}`}>
         <a href = "/" >
-              Local Eats
+              {APP_TITLE}
             </a>
         </div>
 

@@ -8,6 +8,7 @@ import AddLocationForm from './Components/AddLocationForm';
 //import { Context } from './Contexts/formContext';
 import { template } from './formDatatemplate';
 import { FormProvider } from './Contexts/FormContext';
+import Footer from './Components/Footer';
 function App() {
   const [formLocationData, setFormLocationData] = useState(template);
   //const contextValue = {formLocationData, setFormLocationData};
@@ -27,6 +28,7 @@ function App() {
           <Map/>
           </div> */}
         </FormProvider>
+        <Footer></Footer>
     </div>
     </BrowserRouter>
 
