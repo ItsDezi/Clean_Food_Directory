@@ -54,6 +54,12 @@ public class Controller {
     public ResponseEntity<List<LocationPreview>> getLocationPreviews() {
         return ResponseEntity.ok(locationServiceImpl.getAllPreviews());
     }
+
+    @GetMapping("/details")
+    public ResponseEntity<Location> getLocationFromId(@RequestParam("markerId") Long id) {
+        System.out.println("Server received is of " + id);
+        return ResponseEntity.ok(locationServiceImpl.findLocationById(id));
+    }
     
     
 }
