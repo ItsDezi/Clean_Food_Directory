@@ -107,6 +107,21 @@ background-color: var(--primary);
   width: fit-content;
   margin:auto
 }
+.details-container-container {
+  padding-top: 12vh;
+}
+.details-container {
+  display: inline-block;
+}
+.details-container span{
+  float: left;
+  width: 100%;
+  display: flex;
+  justify-content:start;
+}
+.details-container a{
+  color: black !important;
+}
 .custom-marker-cluster {
   background-color: var(--primary);
   height: 2em;

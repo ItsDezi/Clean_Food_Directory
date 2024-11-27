@@ -9,6 +9,7 @@ import L from 'leaflet';
 import { getLocationPreviews } from '../Services/apiService';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import icon from '../Assets/clean_food_directory_logo.png';
 
 export default function Map() {
   const [loading, setLoading] = useState(false);
@@ -41,8 +42,8 @@ export default function Map() {
 //let markers:marker[] = [];
     // create custom icon
 let customIcon = L.icon({
-    iconUrl: "https://www.svgrepo.com/show/74027/orange.svg",
-    iconSize: [38, 95],
+    iconUrl: icon,
+    iconSize: [95, 95],
 });
     // custom cluster icon
 const createClusterCustomIcon = function (this:any, cluster:any) {

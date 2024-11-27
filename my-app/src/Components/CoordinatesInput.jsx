@@ -10,6 +10,7 @@ import {
 import { useState, useEffect } from "react";
 //import { DivIcon, Icon, divIcon, map, point } from "leaflet";
 import L from "leaflet";
+import icon from '../Assets/clean_food_directory_logo.png';
 
 function CoordinatesInput({place, setPlace}) {
   let [position, setPosition] = useState({ latitude: 0, longitude: 0 });
@@ -38,8 +39,8 @@ function CoordinatesInput({place, setPlace}) {
   // }, [position]);
   function LocationMarker() {
     let customIcon = L.icon({
-      iconUrl: "https://www.svgrepo.com/show/74027/orange.svg",
-      iconSize: [38, 95],
+      iconUrl: icon,
+      iconSize: [95, 95],
     });
     const map = useMapEvents({
       click(e) {
