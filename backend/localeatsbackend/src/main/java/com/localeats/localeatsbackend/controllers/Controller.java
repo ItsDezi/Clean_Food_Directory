@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class Controller {
     @Autowired
     LocationServiceImpl locationServiceImpl;
@@ -57,8 +57,11 @@ public class Controller {
 
     @GetMapping("/details")
     public ResponseEntity<Location> getLocationFromId(@RequestParam("markerId") Long id) {
-        System.out.println("Server received is of " + id);
-        return ResponseEntity.ok(locationServiceImpl.findLocationById(id));
+        System.out.println("Server received id of " + id);
+        Location location = locationServiceImpl.findLocationById(id);
+        //NOTE setting contributor equal to null is so that there isn't an infinite nested loop of location:{contributor:{location:contributor{...}}}
+        location.setContributors(null);
+        return ResponseEntity.ok(location);
     }
     
     

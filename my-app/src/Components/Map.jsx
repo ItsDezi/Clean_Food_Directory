@@ -72,7 +72,7 @@ const createClusterCustomIcon = function (this:any, cluster:any) {
         {markers.map((marker) => (
           <Marker position={[marker.latitude, marker.longitude]} icon={customIcon}>
             <Popup>
-            <Link to={`/details?markerId=${marker.id}`}>
+            <Link to={`/details/${marker.id}`}>
               <p className='popup-text'>{marker.name}</p>
             </Link>
               </Popup>

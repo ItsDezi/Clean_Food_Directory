@@ -9,6 +9,16 @@
             "projectName": "localEatsBackend",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-LocaleatsbackendApplication<localeatsbackend>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.localeats.localeatsbackend.LocaleatsbackendApplication",
+            "projectName": "localeatsbackend",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

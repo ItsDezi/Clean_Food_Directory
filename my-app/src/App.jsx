@@ -9,6 +9,7 @@ import AddLocationForm from './Components/AddLocationForm';
 import { template } from './formDatatemplate';
 import { FormProvider } from './Contexts/FormContext';
 import Footer from './Components/Footer';
+import ListingDetails from './Pages/ListingDetails';
 function App() {
   const [formLocationData, setFormLocationData] = useState(template);
   //const contextValue = {formLocationData, setFormLocationData};
@@ -19,6 +20,7 @@ function App() {
       <FormProvider>
           <Routes>
             <Route path="/contribute" element={<AddLocationForm/>}/>
+            <Route path="/details/:markerId" element={<ListingDetails />} />
             <Route path="/" element={<Home/>}/>
           </Routes>
           {/* <div id = "home">
