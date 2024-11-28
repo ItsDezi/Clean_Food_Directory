@@ -226,38 +226,38 @@ function AddLocationForm() {
 
         <Form.Group>
           <Form.Label>Website</Form.Label>
-          <Form.Control id='websiteURL' type="url" placeholder="www.marthaeggs.com" onChange={(e) => {handleChange(e)}}/>
+          <Form.Control id='websiteURL' type="url" placeholder="https://www.marthaeggs.com" onChange={(e) => {handleChange(e)}}/>
         </Form.Group>
 
         <Form.Group>
           <Form.Label>Instagram</Form.Label>
-          <Form.Control id='instagramHandle' type="text" placeholder="@eggs_by_martha" onChange={(e) => {handleChange(e)}}/>
+          <Form.Control id='instagramHandle' type="url" placeholder="https://www.instagram.com/eggsbymartha" onChange={(e) => {handleChange(e)}}/>
         </Form.Group>
 
         <Form.Group>
           <Form.Label>Facebook Page</Form.Label>
-          <Form.Control id='facebookURL' type="url" placeholder="www.facebook.com/eggs_by_martha" onChange={(e) => {handleChange(e)}}/>
+          <Form.Control id='facebookURL' type="url" placeholder="https://www.facebook.com/eggsbymartha" onChange={(e) => {handleChange(e)}}/>
         </Form.Group>
 
         <Form.Group>
           <Form.Label>Youtube</Form.Label>
-          <Form.Control id='youtubeLink' type="url" placeholder="www.youtube.com/eggs_by_martha" onChange={(e) => {handleChange(e)}}/>
+          <Form.Control id='youtubeLink' type="url" placeholder="https://www.youtube.com/eggs_by_martha" onChange={(e) => {handleChange(e)}}/>
         </Form.Group>
 
         <Form.Group>
           <Form.Label>Twitter</Form.Label>
-          <Form.Control id='twitterLink' type="text" placeholder="@eggTweets" onChange={(e) => {handleChange(e)}}/>
+          <Form.Control id='twitterLink' type="url" placeholder="https://www.x.com/eggTweets" onChange={(e) => {handleChange(e)}}/>
         </Form.Group>
 
         <Form.Group>
           <Form.Label>Tik Tok</Form.Label>
-          <Form.Control id='tiktokLink' type="text" placeholder="@marthasTikToks" onChange={(e) => {handleChange(e)}}/>
+          <Form.Control id='tiktokLink' type="url" placeholder="https://www.tiktok.com/@marthasTikToks" onChange={(e) => {handleChange(e)}}/>
         </Form.Group>
 
-        <Form.Group>
+        {/* <Form.Group>
           <Form.Label>Additional Links</Form.Label>
           <Form.Control id='additionalLinks' type="url" placeholder="www.yelp.com/eggs_by_martha" onChange={(e) => {handleChange(e)}}/>
-        </Form.Group>
+        </Form.Group> */}
 
         <Form.Group>
           <Form.Label>Your name</Form.Label>

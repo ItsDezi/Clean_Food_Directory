@@ -22,10 +22,10 @@ function Footer() {
               <a href='/contribute' className={`${styles.navLink}`}>Contribute</a>
             </li>
             <li>
-              <a href='#home' className={`${styles.navLink}`}>All products</a>
+              <a href='#home' className={`${styles.navLink}`}>Contact Us</a>
             </li>
             <li>
-              <a href='#home' className={`${styles.navLink}`}>Contact</a>
+              <a href='about' className={`${styles.navLink}`}>About us</a>
             </li>
           </ul>
   </div>
