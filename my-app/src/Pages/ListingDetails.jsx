@@ -41,6 +41,16 @@ function ListingDetails({ data }) {
         const index = date.indexOf('T');
         return date.substring(0, index);
       }
+      function validateLinks(link){
+        try {
+          console.log("link is!", link)
+          new URL(link);
+          return true;
+        } catch (err) {
+          console.log("failed", link);
+          return false;
+        }
+      }
   return (
     <div className="details-container-container">
     {loading ? (
@@ -80,13 +90,16 @@ function ListingDetails({ data }) {
       <div>
         <h3>Links</h3>
         <ul style={{display:'inline-flex', }}>
-          <li><a href={details.websiteURL} target="_blank" rel="noopener noreferrer"><FaLink size={iconSize.size}/></a></li>
-          <li><a href={details.facebookURL} target="_blank" rel="noopener noreferrer"><FaFacebookSquare size={iconSize.size}/></a></li>
-          <li><a href={details.twitterLink} target="_blank" rel="noopener noreferrer"><FaSquareXTwitter size={iconSize.size}/></a></li>
-          <li><a href={details.instagramHandle} target="_blank" rel="noopener noreferrer"><FaInstagram size={iconSize.size}/></a></li>
-          <li><a href={details.youtubeLink} target="_blank" rel="noopener noreferrer"><FaYoutubeSquare size={iconSize.size}/></a></li>
-          <li><a href={details.tiktokLink} target="_blank" rel="noopener noreferrer"><AiFillTikTok size={iconSize.size}/></a></li>
-          <li>{details.additionalLinks}</li>
+          {validateLinks(details.websiteURL) ? (<li><a href={details.websiteURL} target="_blank" rel="noopener noreferrer"><FaLink size={iconSize.size}/></a></li>) : (<></>)}
+          {validateLinks(details.facebookURL) ? (<li><a href={details.facebookURL} target="_blank" rel="noopener noreferrer"><FaFacebookSquare size={iconSize.size}/></a></li>) : (<></>)}
+          {validateLinks(details.twitterLink) ? (<li><a href={details.twitterLink} target="_blank" rel="noopener noreferrer"><FaSquareXTwitter size={iconSize.size}/></a></li>) : (<></>)}
+          {validateLinks(details.instagramHandle) ? (<li><a href={details.instagramHandle} target="_blank" rel="noopener noreferrer"><FaInstagram size={iconSize.size}/></a></li>) : (<></>)}
+          {validateLinks(details.youtubeLink) ? (<li><a href={details.youtubeLink} target="_blank" rel="noopener noreferrer"><FaYoutubeSquare size={iconSize.size}/></a></li>) : (<></>)}
+          {validateLinks(details.tiktokLink) ? (<li><a href={details.tiktokLink} target="_blank" rel="noopener noreferrer"><AiFillTikTok size={iconSize.size}/></a></li>) : (<></>)}
+
+          
+          
+          {/* <li>{details.additionalLinks}</li> */}
         </ul>
       </div>
     </div>
