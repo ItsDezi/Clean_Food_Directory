@@ -11,6 +11,7 @@ import { FormProvider } from './Contexts/FormContext';
 import Footer from './Components/Footer';
 import ListingDetails from './Pages/ListingDetails';
 import About from './Pages/About';
+import Contact from './Pages/Contact';
 function App() {
   const [formLocationData, setFormLocationData] = useState(template);
   //const contextValue = {formLocationData, setFormLocationData};
@@ -20,6 +21,7 @@ function App() {
     <div className="App">
       <FormProvider>
           <Routes>
+            <Route path="/contact" element={<Contact/>}/>
             <Route path="/contribute" element={<AddLocationForm/>}/>
             <Route path="/about" element={<About/>}/>
             <Route path="/details/:markerId" element={<ListingDetails />} />
