@@ -54,6 +54,7 @@
     color: var(--secondary);
     border-color: var(--secondary);
     border-width: 2px;
+    width: max-content;
   }
   
   
@@ -183,7 +184,7 @@
       padding: 10px 20px;
       display:flex;
       align-items:center;
-      min-height: 70px;
+      height: 70px;
       padding-right: 60px;
       margin-right: 60px;
     }
