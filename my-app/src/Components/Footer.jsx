@@ -25,7 +25,7 @@ function Footer() {
               <a href='#home' className={`${styles.navLink}`}>Contact Us</a>
             </li>
             <li>
-              <a href='about' className={`${styles.navLink}`}>About us</a>
+              <a href='about' className={`${styles.navLink}`}>About Us</a>
             </li>
           </ul>
   </div>
