@@ -26,7 +26,7 @@ function About() {
                         <p>Kuba gained an interest in nutrition after realizing he had consumed too many gas station glizzies. After finishing his last glizzy, he made an oath to find a way for the world to have better accessibility to good food.</p>
                         </div>
                     </div>
-                    <div className="founders-box">
+                    <div className="founders-box py-4">
                         <img src={dez} />
                         <div>
                         <h5>Julien Desmangles</h5>
