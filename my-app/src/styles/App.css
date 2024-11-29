@@ -76,13 +76,13 @@
   box-shadow: 1px 2px 20px var(--primary);
   align-self: center;
   justify-self: center;
-  /* max-width: 70%; */
+  max-width: 98%;
   justify-items: self-start;
   text-align: start;
   
 }
 .about-container-container {
-  padding-top: 12vh;
+  padding-top: 16vh;
   display: grid;
   justify-content: center;
   grid-template-columns: 20% 60% 20%;
