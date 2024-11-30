@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.localeats.localeatsbackend.entities.Contact;
 import com.localeats.localeatsbackend.entities.Contributor;
 import com.localeats.localeatsbackend.entities.ContributorLocationWrapper;
 import com.localeats.localeatsbackend.entities.Location;
 import com.localeats.localeatsbackend.entities.LocationPreview;
+import com.localeats.localeatsbackend.services.ContactServiceImpl;
 import com.localeats.localeatsbackend.services.ContributorServiceImpl;
 //import com.localeats.localeatsbackend.entities.Media;
 import com.localeats.localeatsbackend.services.LocationServiceImpl;
@@ -27,10 +29,9 @@ public class Controller {
     @Autowired
     LocationServiceImpl locationServiceImpl;
     ContributorServiceImpl contributorServiceImpl;
-    // @GetMapping("")//Future edit: if number of locations grows to much, conditional rendering of locations within view might be necessary but for now, all will appear
-    // public ResponseEntity<List<LocationPreview>> getNameAndCoordinates() {
-    //     return ResponseEntity.ok(locationServiceImpl.getAllPreviews());
-    // }
+    @Autowired
+    ContactServiceImpl contactServiceImpl;
+
     @PostMapping("/contribute")
     public ResponseEntity<String> saveLocation(@RequestBody ContributorLocationWrapper requestObjects) throws Exception {
         //TODO: process POST request
@@ -64,5 +65,15 @@ public class Controller {
         return ResponseEntity.ok(location);
     }
     
-    
+    @PostMapping("/contact")
+    public ResponseEntity<String> saveLocation(@RequestBody Contact requestObject) throws Exception {
+        //TODO: process POST request
+        System.out.println("Ladies and gentlemen... We have contact.");
+        Contact contact = requestObject;
+        System.out.println(contact.toString());
+        System.out.println(contactServiceImpl);
+        contactServiceImpl.saveContact(contact);
+        //contributorServiceImpl.save
+        return ResponseEntity.ok("Save successful.");
+    }
 }
