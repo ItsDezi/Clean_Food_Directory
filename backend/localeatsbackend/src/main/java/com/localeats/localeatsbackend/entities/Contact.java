@@ -13,17 +13,24 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String contact_name;
+    private String contact_email;
+    private Timestamp contact_date;
+    private String contact_message;
     public Contact(String contact_name, String contact_email, Timestamp contact_date) {
         this.contact_name = contact_name;
         this.contact_email = contact_email;
         this.contact_date = contact_date;
     }
+
     public Contact() {
     }
-    private String contact_name;
-
-    private String contact_email;
-    private Timestamp contact_date;
+    public String getContact_message() {
+        return contact_message;
+    }
+    public void setContact_message(String contact_message) {
+        this.contact_message = contact_message;
+    }
     public Long getId() {
         return id;
     }

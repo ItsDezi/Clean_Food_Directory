@@ -46,6 +46,7 @@ CREATE TABLE contact (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     contact_name VARCHAR(255),
     contact_email VARCHAR(255),
+    contact_message TEXT,
     contact_date TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP
 );
 -- CREATE TABLE media (

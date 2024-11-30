@@ -36,3 +36,14 @@ export const uploadData = async (formData) => {
     console.log("response", response);
     return response;
   }
+
+  export const uploadContact = async (formData) => {
+    const API_URL = 'http://localhost:8080/api/contact';
+    try {
+      const response = await axios.post('http://localhost:8080/api/contact', formData);
+      return response.data;
+    } catch (error) {
+      console.error('Error uploading this message: \n', error); 
+      //throw error;
+    }
+  }
