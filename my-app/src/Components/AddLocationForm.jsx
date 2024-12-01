@@ -18,13 +18,17 @@ function AddLocationForm() {
   //const { data, updateData } = useContext(FormContext); // Access context
   const [findBy, setfindBy] = useState("address");
   const [place, setPlace] = useState({geometry: {coordinates:[0,0]}});
-  const [ error, setError ] = useState("");
+  const [ nameError, setNameError ] = useState("");
+  const [ locationError, setLocationError ] = useState();
+  const [ contributorNameError, setContributorNameError ] = useState();
+  const [ contributorEmailError, setContributorEmailError ] = useState();
+
   const [ formData, setFormData ] = useState({
     location: {
       address: "",
       city: "",
       closeTimestamp: "",
-      country: "US",
+      country: "",
       description: "",
       email: "",
       lastUpdated: "",
@@ -87,7 +91,7 @@ function AddLocationForm() {
     //   event.stopPropagation();
     //   console.log("validity check failed");
     // }
-    if (validateForm === false) {
+    if (validateForm() === false) {
       event.preventDefault();
       event.stopPropagation();
       console.log("validity check failed");
@@ -121,30 +125,46 @@ function AddLocationForm() {
   }
 
   function validateForm() {
-    if(formData.location.name.length <= 0)
+    if(!formData.location.name || formData.location.name.length <= 0)
     {
-      setError("Please enter a name for the location!");
+      setNameError("Please enter a name for the location.");
+      setLocationError();
+      setContributorEmailError();
+      setContributorNameError();
       return false;
     }
-    else if(formData.location.latitude == undefined || formData.location.latitude == null || formData.location.latitude == 0 || formData.location.longitude == undefined || formData.location.longitude == null || formData.location.longitude == 0)
+    else if(!formData.location.latitude || !formData.location.longitude || formData.location.latitude == undefined || formData.location.latitude === null || formData.location.latitude == 0 || formData.location.longitude == undefined || formData.location.longitude == null || formData.location.longitude == 0)
     {
-      setError("Please set a valid location!");
+      setLocationError("Please set a valid location either by inputting an address or clicking it on the map.");
+      setNameError();
+      setContributorEmailError();
+      setContributorNameError();
+      return false;
+    }
+    else if(!formData.contributor.contributor_name || formData.contributor.contributor_name == undefined || formData.contributor.contributor_name == null || formData.contributor.contributor_name == "" || formData.contributor.contributor_name.length == 0 )
+    {
+      setContributorNameError("Please enter your name.");
+      setLocationError();
+      setNameError();
+      setContributorEmailError();
       return false;
 
     }
-    else if(formData.contributor.contributor_name == undefined || formData.contributor.contributor_name == null || formData.contributor.contributor_name == "" || formData.contributor.contributor_name.length == 0 )
-    {
-      setError("Please enter your name.");
-      return false;
-
-    }
-    else if(formData.contributor.contributor_email == undefined || formData.contributor.contributor_email == null || formData.contributor.contributor_email == "" || formData.contributor.contributor_email.length == 0)
+    else if( !formData.contributor.contributor_email || formData.contributor.contributor_email == undefined || formData.contributor.contributor_email == null || formData.contributor.contributor_email == "" || formData.contributor.contributor_email.length == 0)
       {
-        setError("Please enter your email.");
+        setContributorEmailError("Please enter your email.");
+        setLocationError();
+        setNameError();
+        setContributorNameError();
         return false;
       }
     else
     {
+      setLocationError();
+      setNameError();
+      setContributorEmailError();
+      setContributorNameError();
+
       return true;
     }
   }
@@ -191,8 +211,9 @@ function AddLocationForm() {
     <div className="container form-container mt-2">
       <Form className="add-location-form" onSubmit={handleSubmit}>
         <Form.Group>
-          <Form.Label>Location name</Form.Label>
-          <Form.Control id='name' required type="text" placeholder="Marthas fresh eggs" onChange={(e) => {handleChange(e)}}/>
+          <Form.Label>Location name (Required)</Form.Label>
+          <Form.Control id='name' type="text" placeholder="Marthas fresh eggs" onChange={(e) => {handleChange(e)}} style={{ border: !nameError ? '0.5px solid gray' : '2px solid red' }}/>
+          <Form.Text style={{ color: !nameError ? 'white':'red'}}>{nameError}<br/></Form.Text>
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Text className="text-muted">
             If it has no formal name, just add what they have and where it is.
@@ -200,9 +221,10 @@ function AddLocationForm() {
           </Form.Text>
         </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Search for the location or find it on the map if there is no official address.</Form.Label>
+        <Form.Group style={{ border: !locationError ? '0px solid gray' : '2px solid red' }}>
+          <Form.Label>Search for the location or find it on the map if there is no official address.(Required)</Form.Label>
         <TabComponents/>
+        <Form.Text style={{ color: !locationError ? 'white':'red'}}>{locationError}</Form.Text>
         </Form.Group>
 
         <Form.Group className='py-4'>
@@ -260,13 +282,16 @@ function AddLocationForm() {
         </Form.Group> */}
 
         <Form.Group>
-          <Form.Label>Your name</Form.Label>
-          <Form.Control id='contributor_name' type="name" placeholder="John Doe" onChange={(e) => {handleContributorChange(e)}}/>
+          <Form.Label>Your name(Required)</Form.Label>
+          <Form.Control id='contributor_name' type="name" placeholder="John Doe" onChange={(e) => {handleContributorChange(e)}} style={{ border: !contributorNameError ? '0.5px solid gray' : '2px solid red' }}/>
+          <Form.Text style={{ color: !contributorNameError ? 'white':'red'}}>{contributorNameError}</Form.Text>
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Your email</Form.Label>
-          <Form.Control id='contributor_email' type="email" placeholder="contributor@example.com" onChange={(e) => {handleContributorChange(e)}}/>
+          <Form.Label>Your email(Required)</Form.Label>
+          <Form.Control id='contributor_email' type="email" placeholder="contributor@example.com" onChange={(e) => {handleContributorChange(e)}} style={{ border: !contributorEmailError ? '0.5px solid gray' : '2px solid red' }}/>
+          <Form.Text style={{ color: !contributorEmailError ? 'white':'red'}}>{contributorEmailError}</Form.Text>
+
         </Form.Group>
 
           <Form.Control id='submit_btn' type="submit" />
