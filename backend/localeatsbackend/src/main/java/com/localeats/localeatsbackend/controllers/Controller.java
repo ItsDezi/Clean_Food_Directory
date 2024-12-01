@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class Controller {
     @Autowired
     LocationServiceImpl locationServiceImpl;
+    @Autowired
     ContributorServiceImpl contributorServiceImpl;
     @Autowired
     ContactServiceImpl contactServiceImpl;
@@ -38,7 +39,7 @@ public class Controller {
         System.out.println("wooooooowaweewa");
         Location loc = requestObjects.getLocation();
         List<Contributor> tmp = loc.getContributors();
-        System.out.println(requestObjects.getContributor().toString());
+        //System.out.println(requestObjects.getContributor().toString());
         Contributor tmpContributor = requestObjects.getContributor();
         tmpContributor.setLocation(loc);
         if (tmp == null)

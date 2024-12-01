@@ -20,6 +20,10 @@ public class ContributorLocationWrapper {
     public Contributor getContributor() {
         return contributor;
     }
+    @Override
+    public String toString() {
+        return "ContributorLocationWrapper [location=" + location + ", contributor=" + contributor + "]";
+    }
     public void setContributor(Contributor contributor) {
         this.contributor = contributor;
     }
