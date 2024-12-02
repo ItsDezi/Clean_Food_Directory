@@ -108,7 +108,7 @@ function Contact () {
         databaseUpload();
         }
     }
-    function FloatingDiv({ delay, bgImg }) {
+    function FloatingDiv({ delay, bgImg, initx1, initx2 }) {
       return (
         <motion.div
           style={{
@@ -134,7 +134,7 @@ function Contact () {
               }
             },
             initial: {
-              x: [0, 20],
+              x: [initx1, initx2],
               y: [0, 3],
               rotate: 10,
               transition: {
@@ -155,11 +155,11 @@ function Contact () {
       <div className="contact-general-container">
                 
         <div className="food-animation" style={{display:"inline-block", justifyItems:"center", marginTop:"15vh"}}>
-        <FloatingDiv bgImg={avocado}/>
+        <FloatingDiv initx1={0} initx2={20} bgImg={avocado}/>
 
-        <FloatingDiv bgImg={snapPea} delay={0.3} />
+        <FloatingDiv initx1={0} initx2={20} bgImg={snapPea} delay={0.3} />
 
-        <FloatingDiv bgImg={mushroom} delay={0.6} />
+        <FloatingDiv initx1={0} initx2={20} bgImg={mushroom} delay={0.6} />
         </div>
         <div className="container form-container" >
         <Form onSubmit={handleSubmit}>
@@ -196,11 +196,11 @@ function Contact () {
         </Form>
         </div>
         <div className="food-animation" style={{display:"inline-block", justifyItems:"center", marginTop:"15vh"}}>
-        <FloatingDiv bgImg={avocado}/>
+        <FloatingDiv initx1={20} initx2={0} bgImg={avocado}/>
 
-        <FloatingDiv bgImg={snapPea} delay={0.3} />
+        <FloatingDiv initx1={20} initx2={0} bgImg={snapPea} delay={0.3} />
 
-        <FloatingDiv bgImg={mushroom} delay={0.6} />
+        <FloatingDiv initx1={20} initx2={0} bgImg={mushroom} delay={0.6} />
         </div>
         </div>
     )
