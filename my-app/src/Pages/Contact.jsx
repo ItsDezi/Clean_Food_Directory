@@ -182,7 +182,16 @@ function Contact () {
           <Form.Text style={{ color: isValid ? 'white':'red'}}>{messageError}</Form.Text>
         </Form.Group>
 
-        <Form.Control id='submit_btn' type="submit" />
+        <motion.button
+        id='submit_btn' type="submit"
+        style={{width:'200px', height:'50px',color:'white', borderRadius:'15px', backgroundColor:'var(--primary)'}}
+        title="Submit"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        >
+          Submit
+          </motion.button>
 
         </Form>
         </div>
