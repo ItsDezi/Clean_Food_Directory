@@ -16,6 +16,7 @@ export default function Map() {
   const [loading, setLoading] = useState(false);
     // markers
     const [markers, setMarkers] = useState([]);
+    const [ apiError, setApiError ] = useState();
     type marker = {
       latitude: number,
       longitude: number,
@@ -27,13 +28,20 @@ export default function Map() {
     const getAllPreviews = async() => {
       setLoading(true);
       const tmp = await getLocationPreviews();
+      console.log("tmp", tmp);
+      if(typeof tmp !== "undefined")
+      {
       setMarkers(tmp);
-      // for(int i = 0; i < tmp.length(); i++)
-      // {
 
-      // }
       console.log("tmp: ", tmp);
       setLoading(false);
+      }
+      else{
+        console.log("Failed to fetch location previews...")
+        setApiError(true);
+        setLoading(false);
+        alert("There's been an error populating the map.");
+      }
         }
 
     useEffect(() => {
