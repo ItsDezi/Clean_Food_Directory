@@ -10,6 +10,7 @@ import { getLocationPreviews } from '../Services/apiService';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import icon from '../Assets/clean_food_directory_logo.png';
+import { HiArrowRight } from "react-icons/hi";
 
 export default function Map() {
   const [loading, setLoading] = useState(false);
@@ -74,7 +75,7 @@ const createClusterCustomIcon = function (this:any, cluster:any) {
           <Marker position={[marker.latitude, marker.longitude]} icon={customIcon}>
             <Popup>
             <Link to={`/details/${marker.id}`}>
-              <p className='popup-text'>{marker.name}</p>
+              <a className='popup-text'>{marker.name} <HiArrowRight/> </a>
             </Link>
               </Popup>
           </Marker>

@@ -211,6 +211,10 @@ background-color: var(--primary);
 color: black !important;
 font: black !important;
 }
+.popup-text:hover{
+  color: #0000EE !important;
+  text-decoration: underline !important;
+}
 .text-cut{
   display: -webkit-box;
   -webkit-box-orient: vertical;
