@@ -7,7 +7,7 @@ function About() {
     return (
         <>
             <div className="about-container-container">
-                <div className="left-about-banner"></div>
+                <div className="left-about-banner banner-images"></div>
                 <div className="about-container">
                     <h1 style={{ padding: "0px 0px 40px 0px" }}>Here's a little about us...</h1>
                     <p>Welcome to {APP_TITLE}, your go-to platform for discovering and sharing hidden gems in the world of clean, locally sourced, and organic foods. Our mission is to connect people with sustainable food options that prioritize health, community, and sustainability.
@@ -34,7 +34,7 @@ function About() {
                         </div>
                     </div>
                 </div>
-                <div className="right-about-banner"></div>
+                <div className="right-about-banner banner-images"></div>
             </div>
 
         </>
