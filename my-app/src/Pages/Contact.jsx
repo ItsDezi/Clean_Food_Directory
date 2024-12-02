@@ -3,6 +3,12 @@ import { Form } from "react-bootstrap";
 import { uploadContact } from "../Services/apiService";
 import { useState } from 'react';
 import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
+import '../styles/FormTest.css';
+import avocado from '../Assets/avocado.jpg';
+import snapPea from '../Assets/snapPea.jpg';
+import mushroom from '../Assets/mushroom.jpg';
+
 function Contact () {
   const [loading, setLoading] = useState(false);
   const [isValid, setIsValid] = useState(true);
@@ -102,8 +108,59 @@ function Contact () {
         databaseUpload();
         }
     }
+    function FloatingDiv({ delay, bgImg }) {
+      return (
+        <motion.div
+          style={{
 
+            width: 150,
+            height: 150,
+            borderRadius: 8,
+            margin: 10,
+            backgroundImage: bgImg,
+            backgroundSize: 100
+          }}
+          animate={["initial"]}
+          variants={{
+
+            rotate: {
+              rotate: [null, -5, 5, 0],
+              transition: {
+                // delay,
+                duration: 10
+                // repeat: Infinity,
+                // repeatDelay: 0.2,
+                // repeatType: "reverse"
+              }
+            },
+            initial: {
+              x: [0, 20],
+              y: [0, 3],
+              rotate: 10,
+              transition: {
+                delay,
+                duration: 2,
+                repeat: Infinity,
+                // repeatDelay: 0.2,
+                repeatType: "reverse"
+              }
+            }
+          }}
+        >
+          <img width={100} src={bgImg}></img>
+          </motion.div>
+      );
+    }
     return (
+      <div className="contact-general-container">
+                
+        <div className="food-animation" style={{display:"inline-block", justifyItems:"center", marginTop:"15vh"}}>
+        <FloatingDiv bgImg={avocado}/>
+
+        <FloatingDiv bgImg={snapPea} delay={0.3} />
+
+        <FloatingDiv bgImg={mushroom} delay={0.6} />
+        </div>
         <div className="container form-container" >
         <Form onSubmit={handleSubmit}>
         <Form.Group>
@@ -128,6 +185,14 @@ function Contact () {
         <Form.Control id='submit_btn' type="submit" />
 
         </Form>
+        </div>
+        <div className="food-animation" style={{display:"inline-block", justifyItems:"center", marginTop:"15vh"}}>
+        <FloatingDiv bgImg={avocado}/>
+
+        <FloatingDiv bgImg={snapPea} delay={0.3} />
+
+        <FloatingDiv bgImg={mushroom} delay={0.6} />
+        </div>
         </div>
     )
 }

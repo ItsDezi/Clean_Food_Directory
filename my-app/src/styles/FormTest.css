@@ -28,7 +28,11 @@
     font-size: .875em;
     color: var(--bs-secondary-color);
 }
-
+.contact-general-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 100%;
+}
 .form-control {
     display: block;
     width: 100%;
@@ -202,4 +206,11 @@ textarea.form-control {
 .form-checkbox {
     width: fit-content;
     padding: 0.75rem;
+}
+
+@media screen and (max-width: 780px){
+    .food-animation{
+        visibility: hidden;
+        width: 0px;
+    }
 }
