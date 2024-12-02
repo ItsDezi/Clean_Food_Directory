@@ -19,6 +19,7 @@
     font-size: calc(10px + 2vmin);
     color: white;
     position:fixed;
+    z-index: 3 !important;
   }
   .appheadernav:span {
     min-height: 12vh;
@@ -160,7 +161,7 @@
       text-align: start;
       width: 100%;
       transition: 0.7s ease-in-out;
-      background-color: aliceblue;
+      background-color: var(--primary);
       padding: 10px;
     }
   
