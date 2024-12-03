@@ -41,15 +41,23 @@ function Contact () {
   const databaseUpload = async (e) => {
     //e.preventDefault();
     //e.stopPropagation();
+    setDbLoading(true);
     uploadContact(formData).then((response) => {
-      console.log(response);
+      console.log("bloimp",response);
       if(response)
       {
         setDbLoading(false);
         console.log("dbLoading has been set to false");
       }
+      else
+      {
+        alert("An error occurred during submission. You can reach us at Juliend290@yahoo.com");
+      }
       console.log("dafuq?");
-  });
+  } , error => {
+    alert("An error occurred during submission. You can reach us at Juliend290@yahoo.com");
+      console.log(error);
+    });
   }
   const handleEmail = async (e) => {
     //e.preventDefault();
@@ -112,6 +120,8 @@ function Contact () {
         handleEmail();
         databaseUpload();
         setSubmitted(true);
+        //console.log("dbLoading", dbLoading);
+        //console.log("notifLoading", notifLoading);
         }
     }
     function FloatingDiv({ delay, bgImg, initx1, initx2 }) {
