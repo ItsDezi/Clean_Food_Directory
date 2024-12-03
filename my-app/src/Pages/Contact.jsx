@@ -10,7 +10,8 @@ import snapPea from '../Assets/snapPea.jpg';
 import mushroom from '../Assets/mushroom.jpg';
 
 function Contact () {
-  const [loading, setLoading] = useState(false);
+  const [notifLoading, setNotifLoading] = useState(false);
+  const [dbLoading, setDbLoading] = useState(false);
   const [isValid, setIsValid] = useState(true);
   const [ nameError, setNameError ] = useState();
   const [ emailError, setEmailError ] = useState();
@@ -40,11 +41,18 @@ function Contact () {
   const databaseUpload = async (e) => {
     //e.preventDefault();
     //e.stopPropagation();
-    uploadContact(formData);
+    uploadContact(formData).then((response) => {
+      console.log(response);
+      if(response)
+      {
+        setDbLoading(false);
+        console.log("dbLoading has been set to false");
+      }
+      console.log("dafuq?");
+  });
   }
   const handleEmail = async (e) => {
     //e.preventDefault();
-    setLoading(true);
     //cUxjyl7gcIoJV58wn
     //template_15jnwdc
     //service_t0n3iuq
@@ -59,19 +67,14 @@ function Contact () {
         message:formData.contact_message,
       },
       `${process.env.REACT_APP_EMAIL_KEY}`,
-    ).then(() => {
-      setLoading(false);
-      //alert("Thank you! We'll get back to you as soon as possible.");
-      // setForm({
-      //   name: '',
-      //   email: '',
-      //   message: '',
-      // })
-    }, (error) =>{
-      setLoading(false);
-      console.log("error!",error.message);
-      alert("An error occurred while sending the message. You can reach me at Juliend290@yahoo.com.");
-    })
+    ).then((response) => {
+      console.log(response);
+      if(response)
+        {
+          setNotifLoading(false);
+        }
+      console.log("dafuq?");
+  });
   }
   const validate = () => {
     if(!formData.contact_name)
@@ -166,7 +169,7 @@ function Contact () {
         </div>
         <div className="container form-container">
         <div>
-      { submitted ? (
+      { submitted && !dbLoading && !notifLoading ? (
         <div >
         <div className="thank-you-container">
           <h3>Thanks for Reaching out!<br/> We'll get back to you as soon as possible.</h3>
