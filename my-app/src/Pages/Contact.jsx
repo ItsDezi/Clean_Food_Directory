@@ -15,6 +15,8 @@ function Contact () {
   const [ nameError, setNameError ] = useState();
   const [ emailError, setEmailError ] = useState();
   const [ messageError, setMessageError ] = useState();
+  const [ submitted, setSubmitted ] = useState(false);
+
 
   const [ formData, setFormData ] = useState({
       contact_name: "",
@@ -59,7 +61,7 @@ function Contact () {
       `${process.env.REACT_APP_EMAIL_KEY}`,
     ).then(() => {
       setLoading(false);
-      alert("Thank you! We'll get back to you as soon as possible.");
+      //alert("Thank you! We'll get back to you as soon as possible.");
       // setForm({
       //   name: '',
       //   email: '',
@@ -106,6 +108,7 @@ function Contact () {
         {
         handleEmail();
         databaseUpload();
+        setSubmitted(true);
         }
     }
     function FloatingDiv({ delay, bgImg, initx1, initx2 }) {
@@ -161,7 +164,14 @@ function Contact () {
 
         <FloatingDiv initx1={0} initx2={20} bgImg={mushroom} delay={0.6} />
         </div>
-        <div className="container form-container" >
+        <div className="container form-container">
+        <div>
+      { submitted ? (
+        <div >
+        <div className="thank-you-container">
+          <h3>Thanks for Reaching out!<br/> We'll get back to you as soon as possible.</h3>
+        </div>
+        </div>) : (
         <Form onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>Your name</Form.Label>
@@ -194,6 +204,8 @@ function Contact () {
           </motion.button>
 
         </Form>
+        )}
+        </div>
         </div>
         <div className="food-animation" style={{display:"inline-block", justifyItems:"center", marginTop:"15vh"}}>
         <FloatingDiv initx1={20} initx2={0} bgImg={avocado}/>
