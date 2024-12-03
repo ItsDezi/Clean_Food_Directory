@@ -25,6 +25,7 @@ function AddLocationForm() {
   const [ locationError, setLocationError ] = useState();
   const [ contributorNameError, setContributorNameError ] = useState();
   const [ contributorEmailError, setContributorEmailError ] = useState();
+  const [dbLoading, setDbLoading] = useState(false);
 
   const [ formData, setFormData ] = useState({
     location: {
@@ -122,7 +123,23 @@ function AddLocationForm() {
       // })
       event.preventDefault();
       event.stopPropagation();
-      uploadData(formData);
+      setDbLoading(true);
+      uploadData(formData).then((response) => {
+        console.log("bloimp",response);
+        if(response)
+        {
+          setDbLoading(false);
+          console.log("dbLoading has been set to false");
+        }
+        else
+        {
+          alert("An error occurred during submission. You can reach us at Juliend290@yahoo.com");
+        }
+        console.log("dafuq?");
+    } , error => {
+      alert("An error occurred during submission. You can reach us at Juliend290@yahoo.com");
+        console.log(error);
+      });
       console.log("Heres da form data!",formData);
       setSubmitted(true);
     }
@@ -213,7 +230,7 @@ function AddLocationForm() {
   }
   return (
     <div>
-      { submitted ? (
+      { submitted && !dbLoading ? (
         <div className='thank-you-container-container'>
         <div className='thank-you-container'>
           <h3>Thanks for your submission!<br/> Our team will review your information and make the details public if they are accurate and appropriate.</h3>
