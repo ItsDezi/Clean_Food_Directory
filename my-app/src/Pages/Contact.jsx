@@ -8,7 +8,7 @@ import '../styles/FormTest.css';
 import avocado from '../Assets/avocado.jpg';
 import snapPea from '../Assets/snapPea.jpg';
 import mushroom from '../Assets/mushroom.jpg';
-
+import FloatingDiv from "../Components/FloatingDiv";
 function Contact () {
   const [notifLoading, setNotifLoading] = useState(false);
   const [dbLoading, setDbLoading] = useState(false);
@@ -124,49 +124,7 @@ function Contact () {
         //console.log("notifLoading", notifLoading);
         }
     }
-    function FloatingDiv({ delay, bgImg, initx1, initx2 }) {
-      return (
-        <motion.div
-          style={{
 
-            width: 150,
-            height: 150,
-            borderRadius: 8,
-            margin: 10,
-            backgroundImage: bgImg,
-            backgroundSize: 100
-          }}
-          animate={["initial"]}
-          variants={{
-
-            rotate: {
-              rotate: [null, -5, 5, 0],
-              transition: {
-                // delay,
-                duration: 10
-                // repeat: Infinity,
-                // repeatDelay: 0.2,
-                // repeatType: "reverse"
-              }
-            },
-            initial: {
-              x: [initx1, initx2],
-              y: [0, 3],
-              rotate: 10,
-              transition: {
-                delay,
-                duration: 2,
-                repeat: Infinity,
-                // repeatDelay: 0.2,
-                repeatType: "reverse"
-              }
-            }
-          }}
-        >
-          <img width={100} src={bgImg}></img>
-          </motion.div>
-      );
-    }
     return (
       <div className="contact-general-container">
                 
