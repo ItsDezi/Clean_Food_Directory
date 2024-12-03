@@ -17,6 +17,7 @@ import { motion } from "framer-motion";
 //import Button from 'react-bootstrap/Button';
 import Places from './Places';
 function AddLocationForm() {
+  const [ submitted, setSubmitted ] = useState(false);
   //const { data, updateData } = useContext(FormContext); // Access context
   const [findBy, setfindBy] = useState("address");
   const [place, setPlace] = useState({geometry: {coordinates:[0,0]}});
@@ -123,6 +124,7 @@ function AddLocationForm() {
       event.stopPropagation();
       uploadData(formData);
       console.log("Heres da form data!",formData);
+      setSubmitted(true);
     }
   }
 
@@ -210,6 +212,13 @@ function AddLocationForm() {
       });
   }
   return (
+    <div>
+      { submitted ? (
+        <div className='thank-you-container-container'>
+        <div className='thank-you-container'>
+          <h3>Thanks for your submission!<br/> Our team will review your information and make the details public if they are accurate and appropriate.</h3>
+        </div>
+        </div>) : (
     <div className="container form-container mt-2">
       <Form className="add-location-form" onSubmit={handleSubmit}>
         <Form.Group>
@@ -307,6 +316,8 @@ function AddLocationForm() {
           Submit
           </motion.button>
       </Form>
+    </div>
+  )}
     </div>
   );
 }
