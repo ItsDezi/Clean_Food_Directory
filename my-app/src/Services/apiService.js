@@ -1,4 +1,5 @@
 import axios from 'axios';
+import emailjs from "@emailjs/browser";
 
 
 export const uploadData = async (formData) => {
@@ -46,4 +47,19 @@ export const uploadData = async (formData) => {
       console.error('Error uploading this message: \n', error); 
       //throw error;
     }
+  }
+
+  export const emailjsSendContact = async (name, email, message) => {
+    emailjs.send(
+      `${process.env.REACT_APP_EMAIL_SERVICE}`,
+      `${process.env.REACT_APP_EMAIL_TEMPLATE}`,
+      {
+        from_name: name,
+        to_name: "Julien",
+        from_email: email,
+        to_email: 'juliend290@yahoo.com',
+        message: message,
+      },
+      `${process.env.REACT_APP_EMAIL_KEY}`,
+    )
   }

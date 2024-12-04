@@ -9,6 +9,7 @@ import avocado from '../Assets/avocado.jpg';
 import snapPea from '../Assets/snapPea.jpg';
 import mushroom from '../Assets/mushroom.jpg';
 import FloatingDiv from "../Components/FloatingDiv";
+import { emailjsSendContact } from "../Services/apiService";
 function Contact () {
   const [notifLoading, setNotifLoading] = useState(false);
   const [dbLoading, setDbLoading] = useState(false);
@@ -64,18 +65,7 @@ function Contact () {
     //cUxjyl7gcIoJV58wn
     //template_15jnwdc
     //service_t0n3iuq
-    emailjs.send(
-      `${process.env.REACT_APP_EMAIL_SERVICE}`,
-      `${process.env.REACT_APP_EMAIL_TEMPLATE}`,
-      {
-        from_name: formData.contact_name,
-        to_name: "Julien",
-        from_email: formData.contact_email,
-        to_email: 'juliend290@yahoo.com',
-        message:formData.contact_message,
-      },
-      `${process.env.REACT_APP_EMAIL_KEY}`,
-    ).then((response) => {
+emailjsSendContact(formData.contact_name, formData.contact_email, formData.contact_message ).then((response) => {
       console.log(response);
       if(response)
         {
