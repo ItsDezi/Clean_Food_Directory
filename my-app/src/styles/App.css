@@ -256,4 +256,22 @@ font: black !important;
       visibility: hidden;
       width: 0px;
   }
+  .about-container-container {
+    padding-top: 16vh;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 2% 96% 2%;
+    padding-bottom: 5vh;
+    align-self: center;
+    justify-content: center;
+  }
+
+}
+
+@media screen and (max-width: 780px){
+  .founders-box {
+    display: inline-block;
+    width: 100%;
+  }
+
 }
