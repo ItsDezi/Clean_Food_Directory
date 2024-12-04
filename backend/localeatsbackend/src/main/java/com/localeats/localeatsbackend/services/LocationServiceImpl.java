@@ -26,8 +26,11 @@ public class LocationServiceImpl implements LocationService{
         List<LocationPreview> previews = new ArrayList<>();
         for(Location loc : locationRepository.findAll())
         {
+            if(loc.isApproved())
+            {
             System.out.println(loc.getId());
             previews.add(new LocationPreview(loc.getLatitude(), loc.getLongitude(), loc.getName(), loc.getId()));
+            }
         }
         System.out.println(previews);
         return previews;
