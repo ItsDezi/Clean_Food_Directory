@@ -124,8 +124,7 @@
     .hamburger {
       display: block;
       cursor: pointer;
-      float: inline-end;
-      padding-right: 6vh;
+      float: inline-end;      
     }
   
     .bar {
@@ -173,6 +172,7 @@
       margin: 16px 0;
     }
     .appheadernav {
+      width: 100%;
       min-height: 12vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -185,9 +185,7 @@
     .navbar {
       padding: 10px 20px;
       display:flex;
-      align-items:center;
+      align-items:right;
       height: 70px;
-      padding-right: 60px;
-      margin-right: 60px;
     }
   }
