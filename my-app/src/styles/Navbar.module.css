@@ -124,7 +124,8 @@
     .hamburger {
       display: block;
       cursor: pointer;
-      float: inline-end;      
+      float: inline-end; 
+      padding-right: 75px;     
     }
   
     .bar {
@@ -156,16 +157,17 @@
       flex-direction: column;
       gap: 0;
       top: 70px;
-      left: -100%;
+      right: +100%;
       text-align: start;
-      width: 100%;
+      /* width: 100%; */
       transition: 0.7s ease-in-out;
       background-color: var(--primary);
       padding: 10px;
+      width: fit-content;
     }
   
     .navMenu.active{
-      left: 0;
+      right: 100px;
     }
   
     .navMenu li {
@@ -185,7 +187,6 @@
     .navbar {
       padding: 10px 20px;
       display:flex;
-      align-items:right;
       height: 70px;
     }
   }
