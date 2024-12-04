@@ -523,15 +523,15 @@ function AddLocationForm() {
           marginTop: "15vh",
         }}
       >
-        <FloatingDiv initx1={0} initx2={20} bgImg={avocado} />
+        <FloatingDiv initx1={20} initx2={0} bgImg={avocado} />
         <div style={{height:'200px'}} />
-        <FloatingDiv initx1={0} initx2={20} bgImg={snapPea} delay={0.3} />
+        <FloatingDiv initx1={20} initx2={0} bgImg={snapPea} delay={0.3} />
         <div style={{height:'200px'}} />
-        <FloatingDiv initx1={0} initx2={20} bgImg={mushroom} delay={0.6} />
+        <FloatingDiv initx1={20} initx2={0} bgImg={mushroom} delay={0.6} />
         <div style={{height:'200px'}} />
-        <FloatingDiv initx1={0} initx2={20} bgImg={pumpkin} delay={0.3} />
+        <FloatingDiv initx1={20} initx2={0} bgImg={pumpkin} delay={0.3} />
         <div style={{height:'200px'}} />
-        <FloatingDiv initx1={0} initx2={20} bgImg={grapes} delay={0.6} />
+        <FloatingDiv initx1={20} initx2={0} bgImg={grapes} delay={0.6} />
       </div>
     </div>
   );
