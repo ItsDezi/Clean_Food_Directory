@@ -296,4 +296,12 @@ font: black !important;
     border-style: solid;
   }
 
+  .landing-page-slogan{
+    padding-top: 12vh;
+  }
+}
+@media screen and (max-height: 750px){
+  .landing-page-slogan h5{
+    visibility: hidden;
+  }
 }
