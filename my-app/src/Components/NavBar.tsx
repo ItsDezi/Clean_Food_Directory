@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useState } from 'react';
 import styles from '../styles/Navbar.module.css';
+import { APP_TITLE } from "../Assets/constants";
 function Navbar() {
   // adding the states 
   const [isActive, setIsActive] = useState(false);
@@ -20,7 +21,7 @@ function Navbar() {
       <span className="">
         <div className={`${styles.homebuttonnav}`}>
         <a href = "/" >
-              Local Eats
+              {APP_TITLE}
             </a>
         </div>
 
@@ -32,13 +33,13 @@ function Navbar() {
               <a href='/#map' className={`${styles.navLink}`}>Map</a>
             </li>
             <li onClick={removeActive}>
-              <a href='/addListing' className={`${styles.navLink}`}>Contribute</a>
+              <a href='/contribute' className={`${styles.navLink}`}>Contribute</a>
             </li>
             <li onClick={removeActive}>
-              <a href='#home' className={`${styles.navLink}`}>All products</a>
+              <a href='/contact' className={`${styles.navLink}`}>Contact Us</a>
             </li>
             <li onClick={removeActive}>
-              <a href='#home' className={`${styles.navLink}`}>Contact</a>
+              <a href='/about' className={`${styles.navLink}`}>About Us</a>
             </li>
           </ul>
           <div className={`${styles.hamburger} ${isActive ? styles.active : ''}`}  onClick={toggleActiveClass}>

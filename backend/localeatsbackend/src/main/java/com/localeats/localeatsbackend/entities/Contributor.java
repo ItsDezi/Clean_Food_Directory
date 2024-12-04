@@ -6,6 +6,8 @@ import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -14,8 +16,10 @@ public class Contributor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JsonProperty("contributor_name")
     private String contributor_name;
     //@Column(name="contributor_email")
+    @JsonProperty("contributor_email")
     private String contributor_email;
     @Column(name = "date_contributed_on")
     private Timestamp contributed_on;
@@ -28,10 +32,13 @@ public class Contributor {
     //     this.contributor_email = contributor_email;
     //     this.contributed_on = contributed_on;
     // }
-    //@Autowired
+    @Autowired
     public Contributor(String contributor_name, String contributor_email) {
         this.contributor_name = contributor_name;
         this.contributor_email = contributor_email;
+    }
+    public Contributor() {
+        
     }
     
     // public Contributor() {
@@ -83,7 +90,7 @@ public class Contributor {
     @Override
     public String toString() {
         return "Contributor [id=" + id + ", contributor_name=" + contributor_name + ", contributor_email="
-                + contributor_email + ", location=" + location + "]";
+                + contributor_email + ", contributed_on=" + contributed_on + ", location=" + location + "]";
     }
 
 }

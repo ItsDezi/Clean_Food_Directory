@@ -19,6 +19,7 @@
     font-size: calc(10px + 2vmin);
     color: white;
     position:fixed;
+    z-index: 3 !important;
   }
   .appheadernav:span {
     min-height: 12vh;
@@ -38,15 +39,16 @@
   }
   
   a {
-    text-decoration: none;
-    color: var(--secondary);
-    font-size: 18px;
+    text-decoration: none !important;
+    color: var(--secondary) !important;
+    font-size: 18px !important;
   }
   
   /* navbar */
   .navbar {
     padding: 10px 20px;
     justify-content: space-between;
+    justify-self: center;
     align-items: center;
     gap: 40px;
     min-height: 70px;
@@ -54,6 +56,7 @@
     color: var(--secondary);
     border-color: var(--secondary);
     border-width: 2px;
+    width: max-content;
   }
   
   
@@ -106,6 +109,7 @@
   touch-action: manipulation;
   border-color: var(--secondary);
   border-width: 2px;
+  margin-bottom: 10px;
 }
 
 .homebuttonNav:hover {
@@ -120,8 +124,7 @@
     .hamburger {
       display: block;
       cursor: pointer;
-      float: inline-end;
-      padding-right: 6vh;
+      float: inline-end; 
     }
   
     .bar {
@@ -153,22 +156,24 @@
       flex-direction: column;
       gap: 0;
       top: 70px;
-      left: -100%;
+      right: +100%;
       text-align: start;
-      width: 100%;
+      /* width: 100%; */
       transition: 0.7s ease-in-out;
-      background-color: aliceblue;
+      background-color: var(--primary);
       padding: 10px;
+      width: fit-content;
     }
   
     .navMenu.active{
-      left: 0;
+      right: 100px;
     }
   
     .navMenu li {
       margin: 16px 0;
     }
     .appheadernav {
+      width: 100%;
       min-height: 12vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -181,9 +186,6 @@
     .navbar {
       padding: 10px 20px;
       display:flex;
-      align-items:center;
-      min-height: 70px;
-      padding-right: 60px;
-      margin-right: 60px;
+      height: 70px;
     }
   }

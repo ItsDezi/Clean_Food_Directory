@@ -42,7 +42,13 @@ CREATE TABLE contributors (
         REFERENCES locations(id)
 );
 
-
+CREATE TABLE contact (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    contact_name VARCHAR(255),
+    contact_email VARCHAR(255),
+    contact_message TEXT,
+    contact_date TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP
+);
 -- CREATE TABLE media (
 --     media_id BIGINT PRIMARY KEY AUTO_INCREMENT,
 --     website_url VARCHAR(255),

@@ -2,6 +2,7 @@ package com.localeats.localeatsbackend.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,8 +26,11 @@ public class LocationServiceImpl implements LocationService{
         List<LocationPreview> previews = new ArrayList<>();
         for(Location loc : locationRepository.findAll())
         {
+            if(loc.isApproved())
+            {
             System.out.println(loc.getId());
-            previews.add(new LocationPreview(loc.getLatitude(), loc.getLongitude(), loc.getName()));
+            previews.add(new LocationPreview(loc.getLatitude(), loc.getLongitude(), loc.getName(), loc.getId()));
+            }
         }
         System.out.println(previews);
         return previews;
@@ -42,5 +46,17 @@ public class LocationServiceImpl implements LocationService{
         //     throw new Exception("Coordniates have invalid amount of entries.");
         // }
         locationRepository.save(location);
+    }
+    public Location findLocationById(Long id)
+    {
+        Optional<Location> location = locationRepository.findById(id);
+        if(location.isPresent())
+        {
+            return location.get();
+        }
+        else
+        {
+            return null;
+        }
     }
 }

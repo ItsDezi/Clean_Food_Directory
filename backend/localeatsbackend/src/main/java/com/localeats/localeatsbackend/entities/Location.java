@@ -118,6 +118,19 @@ public class Location {
     public void setId(Long id) {
         this.id = id;
     }
+    @Override
+    public String toString() {
+        return "Location [id=" + id + ", name=" + name + ", description=" + description + ", address=" + address
+                + ", city=" + city + ", state=" + state + ", postalcode=" + postalcode + ", country=" + country
+                + ", phoneNumber=" + phoneNumber + ", email=" + email + ", openTimestamp=" + openTimestamp
+                + ", closeTimestamp=" + closeTimestamp + ", timeZone=" + timeZone + ", notes=" + notes + ", approved="
+                + approved + ", parkingAvailable=" + parkingAvailable + ", latitude=" + latitude + ", longitude="
+                + longitude + ", lastUpdated=" + lastUpdated + ", websiteURL=" + websiteURL + ", facebookURL="
+                + facebookURL + ", instagramHandle=" + instagramHandle + ", additionalLinks=" + additionalLinks
+                + ", twitterLink=" + twitterLink + ", youtubeLink=" + youtubeLink + ", tiktokLink=" + tiktokLink
+                + ", contributors=" + contributors + "]";
+    }
+
     public String getName() {
         return name;
     }
