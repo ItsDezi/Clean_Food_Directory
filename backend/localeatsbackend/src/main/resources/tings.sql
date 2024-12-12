@@ -1,4 +1,3 @@
---removed categories
 CREATE TABLE locations (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255),
@@ -10,14 +9,14 @@ CREATE TABLE locations (
     country VARCHAR(100),
     phone_number VARCHAR(20),
     email VARCHAR(255),
+    last_updated TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
     open_timestamp TIMESTAMP,
     close_timestamp TIMESTAMP,
-    time_zone VARCHAR(4),  -- Storing as VARCHAR since SQL doesn’t natively support TimeZone
+    time_zone VARCHAR(4),
     notes TEXT,
     parking_available BOOLEAN,
     latitude DECIMAL(8,6),
     longitude DECIMAL(9,6),
-    last_updated TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
     website_url VARCHAR(255),
     facebook_url VARCHAR(255),
     instagram_handle VARCHAR(255),
@@ -34,7 +33,7 @@ CREATE TABLE contributors (
     contributor_name VARCHAR(255),
     contributor_email VARCHAR(255),
     location_id BIGINT,
-    date_contributed_on TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+    date_contributed_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 
     
     CONSTRAINT fk_location
@@ -47,17 +46,6 @@ CREATE TABLE contact (
     contact_name VARCHAR(255),
     contact_email VARCHAR(255),
     contact_message TEXT,
-    contact_date TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP
+    contact_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
--- CREATE TABLE media (
---     media_id BIGINT PRIMARY KEY AUTO_INCREMENT,
---     website_url VARCHAR(255),
---     facebook_url VARCHAR(255),
---     instagram_handle VARCHAR(255),
---     additional_links VARCHAR(255),
---     location_id BIGINT,
-    
---     CONSTRAINT fk_location_media
---         FOREIGN KEY (location_id)
---         REFERENCES locations(id)
--- );
+

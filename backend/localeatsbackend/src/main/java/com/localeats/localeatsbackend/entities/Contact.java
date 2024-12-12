@@ -15,6 +15,7 @@ public class Contact {
 
     private String contact_name;
     private String contact_email;
+    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp contact_date;
     private String contact_message;
     public Contact(String contact_name, String contact_email, Timestamp contact_date) {
