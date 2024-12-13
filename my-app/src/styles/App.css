@@ -67,6 +67,14 @@
   box-shadow: 1px 1px 100px var(--primary);
   
 }
+.place-div {
+  justify-items: center;
+  background-color: white;
+  border-radius: 10px;
+}
+.place-div:hover {
+  background-color: #e7e7e7;
+}
 .wrapper-ting {
   width:fit-content;
   justify-content: center;

@@ -23,13 +23,7 @@ function Places ({setPlace}) {
         //console.log(data.features);
     }
     const handleClick = (place) => {
-        //console.log("BOOP",place.geometry.coordinates);
-        //console.log("break", place)
         setPlace(place);
-        // updateData({ 
-        //     latitude: place.geometry.coordinates[0],
-        //     longitude: place.geometry.coordinates[1]
-        //    });
     }
     return(
         <>
@@ -43,7 +37,7 @@ function Places ({setPlace}) {
         <article className="max-w-sm">
             {places?.map((items) => {
                 return(
-                    <div key={items.id} onClick={() => {handleClick(items)}} className="flex items-center justify-start gap-2 bg-white py-2 hover:bg-gray-200 cursor-pointer">
+                    <div key={items.id} onClick={() => {handleClick(items)}} className="place-div flex items-center justify-start gap-2 py-2 cursor-pointer">
                         <h4 className=" text-cut text=[0.9rem] font-semibold">{items.text}</h4>
                         <p className=" text-cut text-[0.8rem] text-gray-500">{items.place_name}</p>
                     </div>
