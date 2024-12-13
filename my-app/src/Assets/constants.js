@@ -1,1 +1,1 @@
-export const APP_TITLE="Local Eats";
+export const APP_TITLE="Clean Food Directory";

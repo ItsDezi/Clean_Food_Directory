@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useState } from 'react';
 import styles from '../styles/Navbar.module.css';
 import { APP_TITLE } from "../Assets/constants";
+import logo from '../Assets/clean_food_directory_logo_modified.png';
+
 function Navbar() {
   // adding the states 
   const [isActive, setIsActive] = useState(false);
@@ -21,7 +23,7 @@ function Navbar() {
       <span className="">
         <div className={`${styles.homebuttonnav}`}>
         <a href = "/" >
-              {APP_TITLE}
+        <img src={logo} />
             </a>
         </div>
 
