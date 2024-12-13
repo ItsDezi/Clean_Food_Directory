@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.TimeZone;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.hibernate.annotations.DialectOverride.ColumnDefault;
@@ -54,8 +55,8 @@ public class Location {
     @Column(columnDefinition = "DECIMAL(9,6)")
     private Float longitude;
     //private String[] reviews;
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
+    //@Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     private Timestamp lastUpdated;
     @Column(name="website_url")
     private String websiteURL;

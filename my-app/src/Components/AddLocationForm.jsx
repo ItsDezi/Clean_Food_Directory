@@ -7,6 +7,7 @@ import InputField from "./InputField";
 import "../styles/FormTest.css";
 import { FormControl, Tab, Tabs, Form } from "react-bootstrap";
 import CoordinatesInput from "./CoordinatesInput";
+import emailjs from "@emailjs/browser";
 import AddressInput from "./AddressInput";
 import { template } from "../formDatatemplate";
 import { FormContext } from "../Contexts/FormContext";
@@ -32,6 +33,7 @@ function AddLocationForm() {
   const [contributorNameError, setContributorNameError] = useState();
   const [contributorEmailError, setContributorEmailError] = useState();
   const [dbLoading, setDbLoading] = useState(false);
+  const [notifLoading, setNotifLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     location: {
@@ -66,6 +68,28 @@ function AddLocationForm() {
       contributed_on: "",
     },
   });
+  const handleEmail = async (e) => {
+    setNotifLoading(true);
+    emailjs.send(
+      `${process.env.REACT_APP_EMAIL_SERVICE}`,
+      `${process.env.REACT_APP_EMAIL_TEMPLATE}`,
+      {
+        from_name: formData.contributor.contributor_name,
+        to_name: "Julien",
+        from_email: formData.contributor.contributor_email,
+        to_email: 'juliend290@yahoo.com',
+        message:"A new contribution has been submitted!",
+      },
+      `${process.env.REACT_APP_EMAIL_KEY}`,
+    ).then((response) => {
+      console.log(response);
+      if(response)
+        {
+          setNotifLoading(false);
+        }
+      console.log("dafuq?");
+  });
+  }
   const TabComponents = () => {
     return (
       <>
@@ -97,38 +121,14 @@ function AddLocationForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
-    console.log(form);
-    // if (form.checkValidity() === false) {
-    //   event.preventDefault();
-    //   event.stopPropagation();
-    //   console.log("validity check failed");
-    // }
     if (validateForm() === false) {
       event.preventDefault();
       event.stopPropagation();
       console.log("validity check failed");
     } else {
-      // console.log("get that date yall!",getCurrentDate())
-      // setFormData({ ...formData,
-      //   location: {
-      //     ...formData.location,
-      //     lastUpdated: getCurrentDate()
-      //   },
-      //   contributor: {
-      //     ...formData.contributor,
-      //     contributed_on: getCurrentDate()
-      //   }
-      //   });
-      //complete submission here
-      // fetch('http://localhost:8080/api/contribute', {
-      //   method: 'POST',
-      //   headers: { "Content-Type": "application/json"},
-      //   body: JSON.stringify(formData)
-      // }).then(() => {
-      //   console.log('new posting added')
-      // })
       event.preventDefault();
       event.stopPropagation();
+      handleEmail();
       setDbLoading(true);
       uploadData(formData).then(
         (response) => {
@@ -215,10 +215,7 @@ function AddLocationForm() {
   const handleChange = (e) => {
     //e.preventDefault();
     //console.log(e.target.value);
-    console.log(e);
     const attribute = e.target.id;
-    console.log(formData);
-    //setFormData((prevFormData) => ({ ...prevFormData.location, [e.target.id]:(e.target.value) }));
     setFormData({
       ...formData,
       location: {
@@ -233,7 +230,6 @@ function AddLocationForm() {
     console.log(e);
     const attribute = e.target.id;
     console.log(formData);
-    //setFormData((prevFormData) => ({ ...prevFormData.location, [e.target.id]:(e.target.value) }));
     setFormData({
       ...formData,
       contributor: {
@@ -273,7 +269,7 @@ function AddLocationForm() {
         <FloatingDiv initx1={0} initx2={20} bgImg={grapes} delay={0.6} />
       </div>
       <div>
-        {submitted && !dbLoading ? (
+        {submitted && !dbLoading && !notifLoading ? (
           <div className="thank-you-container-container">
             <div className="thank-you-container">
               <h3>

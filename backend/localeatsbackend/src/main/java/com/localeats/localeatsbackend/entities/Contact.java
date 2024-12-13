@@ -2,7 +2,9 @@ package com.localeats.localeatsbackend.entities;
 
 import java.sql.Timestamp;
 
-import jakarta.persistence.Entity;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+
 import jakarta.persistence.*;
 
 
@@ -15,7 +17,8 @@ public class Contact {
 
     private String contact_name;
     private String contact_email;
-    @Temporal(TemporalType.TIMESTAMP)
+    //@Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Timestamp contact_date;
     private String contact_message;
     public Contact(String contact_name, String contact_email, Timestamp contact_date) {

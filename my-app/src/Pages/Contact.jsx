@@ -64,6 +64,7 @@ function Contact () {
     //cUxjyl7gcIoJV58wn
     //template_15jnwdc
     //service_t0n3iuq
+    setNotifLoading(true);
     emailjs.send(
       `${process.env.REACT_APP_EMAIL_SERVICE}`,
       `${process.env.REACT_APP_EMAIL_TEMPLATE}`,

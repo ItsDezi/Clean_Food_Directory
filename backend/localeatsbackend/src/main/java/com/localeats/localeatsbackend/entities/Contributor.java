@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.TimeZone;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,6 +23,7 @@ public class Contributor {
     @JsonProperty("contributor_email")
     private String contributor_email;
     @Column(name = "date_contributed_on")
+    @CreationTimestamp
     private Timestamp contributed_on;
     @ManyToOne()//In the future this should probably be a ManyToMany mapping
     @JoinColumn(name = "location_id", referencedColumnName = "id")
