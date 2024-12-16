@@ -160,7 +160,7 @@
       flex-direction: column;
       gap: 0;
       top: 70px;
-      right: +100%;
+      right: -40%;
       text-align: start;
       /* width: 100%; */
       transition: 0.7s ease-in-out;
@@ -170,7 +170,7 @@
     }
   
     .navMenu.active{
-      right: 100px;
+      right: 20px;
     }
   
     .navMenu li {

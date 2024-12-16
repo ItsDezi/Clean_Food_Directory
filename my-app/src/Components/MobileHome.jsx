@@ -7,7 +7,7 @@ function MobileHome() {
     return (
 
         <>
-            <div className="App Home-background">
+            <div className="App Mobile-home-background">
             <span>
                 <h1 className='landing-page-slogan-mobile'>
                 Find what's good in your hood.
