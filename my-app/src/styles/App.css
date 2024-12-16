@@ -56,6 +56,9 @@
   font-weight: bold;
   margin: auto;
 }
+.opaque-background {
+background-color:rgba(255, 255, 255, 0.8) !important;
+}
 .landing-page-slogan h3 {
   font-size: 30px !important;
   font-style: italic !important;

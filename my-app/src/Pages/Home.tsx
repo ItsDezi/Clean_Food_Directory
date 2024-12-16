@@ -18,20 +18,20 @@ function Home() {
                 <div className='wrapper-ting'>
       
                 <span>
-                <h1>
+                <h1 className='opaque-background'>
                 Find what's good in your hood.
               </h1>
                 </span>
               <span>
-              <h3>
+              <h3 className='opaque-background'>
                 Welcome to our community led clean food directory.
               </h3>
               </span>
       
-              <h5>
+              <h5 className='opaque-background'>
                 <span>Whether you're here to share your spots... </span>
               </h5>
-              <h5>
+              <h5 className='opaque-background'>
               <span>or to find some new ones, we've got you covered.</span>
               </h5>
               </div>
