@@ -21,10 +21,21 @@ function ListingDetails({ data }) {
   const {markerId} = useParams();
   const [loading, setLoading] = useState(false);
   const [ details, setDetails ] = useState(template.location);// = template.location;
+  const [hasNoLinks, setHasNoLinks] = useState(false);
   const getDetails = async() => {
     setLoading(true);
     const tmp = await getLocationById(markerId);
     setDetails(tmp);
+    if(!validateLinks(details.websiteURL) && 
+      !validateLinks(details.websiteURL) &&
+      !validateLinks(details.facebookURL) &&
+      !validateLinks(details.twitterLink) &&
+      !validateLinks(details.instagramHandle) &&
+      !validateLinks(details.youtubeLink) &&
+      !validateLinks(details.tiktokLink))
+      {
+        setHasNoLinks(true);
+      }
     console.log("tmp: ", tmp);
     setLoading(false);
       }
@@ -87,7 +98,7 @@ function ListingDetails({ data }) {
       <span><strong>Parking Available: </strong>{details.parkingAvailable ? 'Yes' : 'No'}</span>
       {/* <span><strong>Notes: </strong>{details.notes}</span> */}
       <span><strong>Last Updated: </strong>{formatDate(details.lastUpdated)}</span>
-      <div>
+      {hasNoLinks ? (<></>) : (<div>
         <h3>Links</h3>
         <ul style={{display:'inline-flex', }}>
           {validateLinks(details.websiteURL) ? (<li><a href={details.websiteURL} target="_blank" rel="noopener noreferrer"><FaLink size={iconSize.size}/></a></li>) : (<></>)}
@@ -97,11 +108,8 @@ function ListingDetails({ data }) {
           {validateLinks(details.youtubeLink) ? (<li><a href={details.youtubeLink} target="_blank" rel="noopener noreferrer"><FaYoutubeSquare size={iconSize.size}/></a></li>) : (<></>)}
           {validateLinks(details.tiktokLink) ? (<li><a href={details.tiktokLink} target="_blank" rel="noopener noreferrer"><AiFillTikTok size={iconSize.size}/></a></li>) : (<></>)}
 
-          
-          
-          {/* <li>{details.additionalLinks}</li> */}
         </ul>
-      </div>
+      </div>)}
     </div>
   )}
   </div>

@@ -1,52 +1,59 @@
 import Background from '../Assets/foodBackground.png';
 import Map from '../Components/Map';
 import { useMediaQuery } from 'react-responsive';
+import { motion } from 'framer-motion';
 import MobileHome from '../Components/MobileHome';
 function Home() {
   const isMobile = useMediaQuery({ query: '(max-width: 780px)' });
 
-    return (
-      <>
+  return (
+    <>
       {isMobile ? (
-      <>
-        <MobileHome />
-      </>
+        <>
+          <MobileHome />
+        </>
       ) : (
         <>
-              <div className="App Home-background">
-              <div className='landing-page-slogan'>
-                <div className='wrapper-ting'>
-      
+          <div className="App Home-background">
+            <div className='landing-page-slogan'>
+              <div className='wrapper-ting'>
+
                 <span>
-                <h1>
-                Find what's good in your hood.
-              </h1>
+                  <h1>
+                    Find what's good in your hood.
+                  </h1>
                 </span>
-              <span>
-              <h3>
-                Welcome to our community led clean food directory.
-              </h3>
-              </span>
-      
-              <h5>
-                <span>Whether you're here to share your spots... </span>
-              </h5>
-              <h5>
-              <span>or to find some new ones, we've got you covered.</span>
-              </h5>
+                <span>
+                  <h3>
+                    Welcome to our community led clean food directory.
+                  </h3>
+                </span>
+
+                <h5>
+                  <span>Whether you're here to share your spots... </span>
+                </h5>
+                <h5>
+                  <span>or to find some new ones, we've got you covered.</span>
+                </h5>
               </div>
-      
-              </div>
-      
-      
+
             </div>
-            <div id='map'>
-            <Map/>
+            <div className='scroll-animation-wrapper'>
+              <a href='#map'>
+                <div className='scroll-animation-container'>
+                  <motion.div animate={{ y: [1, 28, 0] }} transition={{ duration: 2, repeat: Infinity, repeatType: 'loop' }} className='animated-circle' />
+                </div>
+              </a>
             </div>
-            </>
+
+          </div>
+          <div id='map'>
+            <Map />
+          </div>
+        </>
       )}
 
-      </>
-    );
-  }
-  export default Home;
+    </>
+  );
+}
+export default Home;
