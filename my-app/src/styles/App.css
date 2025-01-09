@@ -13,6 +13,12 @@
   height: 100vh;
   background-image: url("../Assets/foodBackground.png");
 }
+.Mobile-home-background {
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
 .landing-page-slogan {
   padding-top: 25vh;
   /*margin-left: -30vw;*/
@@ -49,6 +55,9 @@
   font-style: italic !important;
   font-weight: bold;
   margin: auto;
+}
+.opaque-background {
+background-color:rgba(255, 255, 255, 0.8) !important;
 }
 .landing-page-slogan h3 {
   font-size: 30px !important;
