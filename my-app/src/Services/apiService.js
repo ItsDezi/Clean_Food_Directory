@@ -1,10 +1,10 @@
 import axios from 'axios';
 
+const API_URL = `${process.env.REACT_APP_API_PREFIX}`;
 
 export const uploadData = async (formData) => {
-    const API_URL = 'http://ec2-34-227-160-48.compute-1.amazonaws.com:8080/api/contribute';
     try {
-      const response = await axios.post('http://ec2-34-227-160-48.compute-1.amazonaws.com:8080/api/contribute', formData);
+      const response = await axios.post(API_URL + "contribute", formData);
       return response.data;
     } catch (error) {
       console.error('Error posting this listing: \n', error); 
@@ -13,7 +13,7 @@ export const uploadData = async (formData) => {
   }
 
   export const getLocationPreviews = async () => {
-    const response = await axios.get('http://ec2-34-227-160-48.compute-1.amazonaws.com:8080/api/')
+    const response = await axios.get(API_URL)
     .then(response => {
       console.log("apiService", response.data);
       return(response.data);
@@ -26,7 +26,7 @@ export const uploadData = async (formData) => {
 
   export const getLocationById = async (id) => {
     console.log("id in apiService is!", id);
-    const response = await axios.get(`http://ec2-34-227-160-48.compute-1.amazonaws.com:8080/api/details?markerId=${id}`)
+    const response = await axios.get(API_URL + `details?markerId=${id}`)
     .then(response => {
       console.log("apiService for location details", response.data);
       return(response.data);
@@ -38,9 +38,8 @@ export const uploadData = async (formData) => {
   }
 
   export const uploadContact = async (formData) => {
-    const API_URL = 'http://ec2-34-227-160-48.compute-1.amazonaws.com:8080/api/contact';
     try {
-      const response = await axios.post('http://ec2-34-227-160-48.compute-1.amazonaws.com:8080/api/contact', formData);
+      const response = await axios.post(API_URL + 'contact', formData);
       return response.data;
     } catch (error) {
       console.error('Error uploading this message: \n', error); 
