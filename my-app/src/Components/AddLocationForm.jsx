@@ -15,11 +15,11 @@ import { getCurrentDate } from "./GetCurrentDate";
 import { uploadData } from "../Services/apiService";
 import { motion } from "framer-motion";
 import FloatingDiv from "./FloatingDiv";
-import avocado from "../Assets/avocado.jpg";
-import snapPea from "../Assets/snapPea.jpg";
-import mushroom from "../Assets/mushroom.jpg";
-import grapes from "../Assets/grapes.jpg";
-import pumpkin from "../Assets/pumpkin.jpg";
+import avocado from "../Assets/avocado.png";
+import snapPea from "../Assets/snapPea.png";
+import mushroom from "../Assets/mushroom.png";
+import grapes from "../Assets/grapes.png";
+import pumpkin from "../Assets/pumpkin.png";
 
 //import Button from 'react-bootstrap/Button';
 import Places from "./Places";

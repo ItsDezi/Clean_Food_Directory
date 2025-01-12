@@ -5,9 +5,9 @@ import { useState } from 'react';
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import '../styles/FormTest.css';
-import avocado from '../Assets/avocado.jpg';
-import snapPea from '../Assets/snapPea.jpg';
-import mushroom from '../Assets/mushroom.jpg';
+import avocado from '../Assets/avocado.png';
+import snapPea from '../Assets/snapPea.png';
+import mushroom from '../Assets/mushroom.png';
 import FloatingDiv from "../Components/FloatingDiv";
 function Contact () {
   const [notifLoading, setNotifLoading] = useState(false);
