@@ -4,7 +4,7 @@ import { APP_TITLE } from '../Assets/constants';
 function Footer() {
     return (
         <>
-<footer className="background-color: var(--primary); padding: 20px; text-align: center; font-size: 14px; color: #6c757d;">
+<footer className="footy background-color: var(--primary); padding: 20px; text-align: center; font-size: 14px; color: #6c757d;">
     <div className='footer-separator'></div>
     <div>
   <div className='left-footer'>
@@ -12,7 +12,7 @@ function Footer() {
     <p>Empowering your journey to a healthier lifestyle.</p>
   </div>
   </div>
-  <div className="margin: 20px 0; footer-menu-wrapper">
+  <div className="footer-menu-wrapper">
   <ul className='footer-menu'>
             <li>
               <a href='/#map' className={`${styles.navLink}`}>Map</a>
@@ -32,7 +32,7 @@ function Footer() {
     {/* <p>Contact us: <a href="mailto:support@example.com" className="color: #007bff;">support@example.com</a></p> */}
   </div>
   <div>
-    <p>© 2024 {APP_TITLE}. All rights reserved.</p>
+    <p>© 2025 {APP_TITLE}. All rights reserved.</p>
   </div>
 </footer>
 
