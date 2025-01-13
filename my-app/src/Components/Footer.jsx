@@ -12,8 +12,7 @@ function Footer() {
     <p>Empowering your journey to a healthier lifestyle.</p>
   </div>
   </div>
-  <div className='right-footer'>
-  <div className="margin: 20px 0;">
+  <div className="margin: 20px 0; footer-menu-wrapper">
   <ul className='footer-menu'>
             <li>
               <a href='/#map' className={`${styles.navLink}`}>Map</a>
@@ -31,7 +30,6 @@ function Footer() {
   </div>
   <div>
     {/* <p>Contact us: <a href="mailto:support@example.com" className="color: #007bff;">support@example.com</a></p> */}
-  </div>
   </div>
   <div>
     <p>© 2024 {APP_TITLE}. All rights reserved.</p>
